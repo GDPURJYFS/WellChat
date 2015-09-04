@@ -1,13 +1,13 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.4
 
 ApplicationWindow {
     id: pageStackWindow
     title: qsTr("WellChat")
-    width: 640
-    height: 480
+    width: 360
+    height: 640
     visible: true
     color: "#ebebeb"
 
@@ -30,6 +30,12 @@ ApplicationWindow {
         id: __stackView
         anchors.fill: parent
         focus: visible
+    }
+
+    onInitialPageChanged: {
+        if(initialPage.stackView == null) {
+            initialPage.stackView = pageStackWindow.stackView
+        }
     }
 
     function clear() { __stackView.clear(); }

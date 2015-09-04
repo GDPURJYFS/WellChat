@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import "../Component"
 import "./Personal"
+import Sparrow 1.0
 
 Page {
     id: discoverPage

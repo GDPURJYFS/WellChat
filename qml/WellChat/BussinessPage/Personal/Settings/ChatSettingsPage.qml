@@ -4,7 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "../../../Component"
-
+import Sparrow 1.0
 Page {
     id: chatSettnigsPage
     title: qsTr("Chat")

@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "../../Component"
 import "./Settings"
+import Sparrow 1.0
 
 Page {
     id: personalPage

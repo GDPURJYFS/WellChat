@@ -3,8 +3,9 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
-import "./Component"
 import "./BussinessPage"
+import "./Component"
+import Sparrow 1.0
 
 Page {
     id: mainPage

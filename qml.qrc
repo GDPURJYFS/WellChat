@@ -17,19 +17,15 @@
         <file>qml/WellChat/BussinessPage/PersonalPage.qml</file>
         <file>qml/WellChat/BussinessPage/ProfilePage.qml</file>
         <file>qml/WellChat/Component/+android/UI.js</file>
-        <file>qml/WellChat/Component/BottomBar.qml</file>
         <file>qml/WellChat/Component/Constant.qml</file>
         <file>qml/WellChat/Component/Icon.qml</file>
         <file>qml/WellChat/Component/IconButton.qml</file>
         <file>qml/WellChat/Component/IconLabel.qml</file>
         <file>qml/WellChat/Component/MainListView.qml</file>
-        <file>qml/WellChat/Component/Page.qml</file>
-        <file>qml/WellChat/Component/PageStackWindow.qml</file>
         <file>qml/WellChat/Component/SampleButton.qml</file>
         <file>qml/WellChat/Component/SampleTextArea.qml</file>
         <file>qml/WellChat/Component/ScrollBar.qml</file>
         <file>qml/WellChat/Component/Separator.qml</file>
-        <file>qml/WellChat/Component/TopBar.qml</file>
         <file>qml/WellChat/Component/UI.js</file>
         <file>qml/WellChat/resource/background/active/chat-bubble.png</file>
         <file>qml/WellChat/resource/background/inactive/chat-bubble.png</file>
@@ -122,6 +118,16 @@
         <file>qml/WellChat/resource/icons/label-icons/share-zip.png</file>
         <file>qml/WellChat/resource/icons/label-icons/wallet.png</file>
         <file>qml/WellChat/resource/tests/tests001.jpg</file>
+        <file>qml/WellChat/Sparrow/+android/UI.js</file>
+        <file>qml/WellChat/Sparrow/ApplicationSettings.qml</file>
+        <file>qml/WellChat/Sparrow/BottomBar.qml</file>
+        <file>qml/WellChat/Sparrow/Page.qml</file>
+        <file>qml/WellChat/Sparrow/PageStackWindow.qml</file>
+        <file>qml/WellChat/Sparrow/qmldir</file>
+        <file>qml/WellChat/Sparrow/QObject.qml</file>
+        <file>qml/WellChat/Sparrow/SampleLabel.qml</file>
+        <file>qml/WellChat/Sparrow/TopBar.qml</file>
+        <file>qml/WellChat/Sparrow/UI.js</file>
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
         <file>qml/WellChat/MainWindow.qml</file>

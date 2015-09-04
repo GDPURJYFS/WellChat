@@ -3,7 +3,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import "../Component"
-
+import Sparrow 1.0
 Page {
     id: chatsView
     title: "FriendList"
@@ -33,6 +33,41 @@ Page {
         width: chatsView.width
         height: chatsView.height
         model: chatItemsModel
+
+/////////////////////////////////////////////////////////////////////////////////////////
+        /*
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        readonly property alias topSideBarIsOpen: listView.__topSideBarIsOpen
+        property bool __topSideBarIsOpen: false
+        onAtYBeginningChanged: {
+            try {
+                if(listView.atYBeginning) {
+                    console.log(-listView.contentY, listView.headerItem.height)
+                    if( -contentY > listView.headerItem.height) {
+                        listView.__topSideBarIsOpen = true;
+                    }
+                } else {
+                    listView.__topSideBarIsOpen = false;
+                }
+            } catch(e) {    }
+        }
+
+        onTopSideBarIsOpenChanged: {
+            if(listView.topSideBarIsOpen) {
+                listView.highlightRangeMode = ListView.ApplyRange   // 焦点Item允许停止的位置
+            } else {
+                listView.highlightRangeMode  = ListView.StrictlyEnforceRange
+            }
+        }
+
+        header: Rectangle {
+            id: headerItem
+            width: listView.width;
+            height: listView.height
+            color: "black"
+        }
+        //*/
+/////////////////////////////////////////////////////////////////////////////////////////
         add: Transition {
             NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 400 }
             NumberAnimation { property: "scale"; from: 0; to: 1.0; duration: 400 }
