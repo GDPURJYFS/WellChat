@@ -42,7 +42,7 @@ WellChat is a Application that is a WeChat-like APP by qml.
 
 `QtQuick.Control` 这个模块是专门为桌面平台准备的，对移动平台支持并不完善。不能很好地动态切换不同的 `ToolBar` 和 `StatusBar` 来适配不同的页面。
 
-如何设计一个简单的页面栈呢？查看[简单易用的页面栈框架](doc/readme.md)
+如何设计一个简单的页面栈呢？查看[简单易用的页面栈框架](https://github.com/GDPURJYFS/Sparrow)
 
 ## 剖析界面
 
