@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
-#include <QFont>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
