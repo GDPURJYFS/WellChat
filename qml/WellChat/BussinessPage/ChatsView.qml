@@ -117,8 +117,11 @@ Page {
         delegate: Rectangle {
             id: chatItem
             // chatItem
+
+            property int chatItemHeight: chatItemRowLayout.height
+
             width: chatsView.width
-            height: headPrtraitSize
+            height: chatItem.chatItemHeight
             color: "transparent"
             border.width: 1
             border.color: "#ccc"
@@ -148,17 +151,18 @@ Page {
             ]
 
             RowLayout {
-                anchors.fill: parent
+                id: chatItemRowLayout
+                width: parent.width
+                height: (chatItemName.contentHeight+chatItemContext.contentHeight) * 1.5
                 anchors.margins: spacing
                 Image {
-                    width: headPrtraitSize
-                    height: headPrtraitSize
+                    width: chatItem.chatItemHeight
+                    height: chatItem.chatItemHeight
                     anchors.verticalCenter: parent.verticalCenter
-                    sourceSize.width: headPrtraitSize - 2
-                    sourceSize.height: headPrtraitSize - 2
+                    sourceSize.width: chatItem.chatItemHeight - 2
+                    sourceSize.height: chatItem.chatItemHeight - 2
                     source: "../resource/tests/tests001.jpg"
                     fillMode: Image.PreserveAspectFit
-                    //clip: true
                 }
                 ColumnLayout {
                     Layout.fillHeight: true
@@ -166,14 +170,14 @@ Page {
                     RowLayout {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        Label { Layout.fillWidth: true; text: name }
-                        Label { Layout.fillWidth: true; text: chatTime }
+                        SampleLabel { id: chatItemName; Layout.fillWidth: true; text: name }
+                        SampleLabel { id: chatItemTime; Layout.fillWidth: true; text: chatTime }
                     }
                     RowLayout {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        Label { Layout.fillWidth: true; text: chatContext }
-                        Label { Layout.fillWidth: true; text: chatisBool }
+                        SampleLabel { id: chatItemContext; Layout.fillWidth: true; text: chatContext }
+                        SampleLabel { id: chatItemisBool;Layout.fillWidth: true; text: chatisBool }
                     }
                 }
             }
@@ -267,37 +271,7 @@ Page {
     }
 
     function __LoadChatPage(userid, username){
-
         __PushPage(Qt.resolvedUrl("./Chat/ChatPage.qml"), {username: username} );
-
-//        var component = Qt.createComponent("./Chat/ChatPage.qml");
-//        if(component.status === Component.Ready) {
-
-//            // 防止点击过快，开启过多画面
-//            chatsView.enabled = false;
-
-//            var page = component.createObject(chatsView.stackView);
-////            page.entered.connect(function() {
-////                // page.entered.disconnect(arguments.callee);
-////                // 在页面进入之后，设置enable为true，才可以处理按键
-////                chatsView.enabled = true;
-////                console.log("entered")
-////            })
-//            page.exited.connect(function() {
-//                page.exited.disconnect(arguments.callee);
-//                chatsView.enabled = true;
-//            });
-
-//            page.username = username;
-//            page.focus = true;
-//            page.width = Qt.binding(function(){ return stackView.width });
-//            page.height = Qt.binding(function(){ return stackView.height });
-//            page.stackView = chatsView.stackView;
-//            stackView.push({item: page, destroyOnPop:true});
-//        } else {
-//            console.log(component.errorString())
-//            chatsView.enabled = true;
-//        }
     }
 
 }
