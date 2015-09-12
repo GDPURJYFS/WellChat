@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import "../Component"
 import Sparrow 1.0
+
 Page {
     id: chatsView
     title: "FriendList"
@@ -33,6 +34,7 @@ Page {
         width: chatsView.width
         height: chatsView.height
         model: chatItemsModel
+        highlightMoveDuration: 1000
 
 /////////////////////////////////////////////////////////////////////////////////////////
         /*

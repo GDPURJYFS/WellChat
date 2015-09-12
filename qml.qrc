@@ -119,6 +119,7 @@
         <file>qml/WellChat/resource/icons/label-icons/wallet.png</file>
         <file>qml/WellChat/resource/tests/tests001.jpg</file>
         <file>qml/WellChat/Sparrow/+android/UI.js</file>
+        <file>qml/WellChat/Sparrow/+android/WebPage.qml</file>
         <file>qml/WellChat/Sparrow/ApplicationSettings.qml</file>
         <file>qml/WellChat/Sparrow/BottomBar.qml</file>
         <file>qml/WellChat/Sparrow/Page.qml</file>
@@ -128,8 +129,8 @@
         <file>qml/WellChat/Sparrow/SampleLabel.qml</file>
         <file>qml/WellChat/Sparrow/TopBar.qml</file>
         <file>qml/WellChat/Sparrow/UI.js</file>
+        <file>qml/WellChat/Sparrow/WebPage.qml</file>
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
-        <file>qml/WellChat/MainWindow.qml</file>
     </qresource>
 </RCC>

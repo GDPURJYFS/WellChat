@@ -1,32 +1,27 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
+import QtQuick.Controls 1.4
+import QtQuick.Window 2.0
+import Sparrow 1.0
 
-QtObject {
+PageStackWindow {
+    id: mainWindow
+    title: qsTr("WellChat")
+    width: 360
+    height: 640
+    initialPage: MainView {
+        id: mainView
+        focus: mainWindow.focus
+        stackView: mainWindow.stackView
+        pageStackWindow: mainWindow
+        width: stackView.width
+        height: stackView.height
 
-    property var mainWindow: MainWindow {
-
-    }
-
-    // 这里检测到应用处于非活跃状态时候，可以触发一个类似支付宝的解锁界面。
-    readonly property int applicationState: Qt.application.state
-
-    onApplicationStateChanged: {
-        switch(applicationState){
-        case Qt.ApplicationActive:
-            console.log("ApplicationActive");
-            break;
-        case Qt.ApplicationInactive:
-            console.log("ApplicationInactive");
-            break;
-        case Qt.ApplicationSuspended:
-            console.log("ApplicationSuspended");
-            break;
-        case Qt.ApplicationHidden:
-            console.log("ApplicationHidden");
-            break;
+        Keys.onBackPressed: {
+            event.accepted = true;
+            // console.log("back")
+            Qt.quit();
         }
     }
-
-    Component.onCompleted: {
-
-    }
 }
+
