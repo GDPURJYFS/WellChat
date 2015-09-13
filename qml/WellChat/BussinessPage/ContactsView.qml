@@ -69,16 +69,13 @@ Page {
 
         delegate: ColumnLayout {
             width: contactsView.width
-            height: 70
+            height: l.height
             IconLabel {
+                id: l
                 spacing: 10
                 Layout.fillWidth: true;
-                height: 70
-                iconWidth: headPrtraitSize
-                iconHeight: headPrtraitSize
                 iconSource: constant.testPic
                 labelText: "哔哩哔哩"
-                fontPointSize: constant.normalFontPointSize
                 onPressAndHold: {
                     menu.chatItemIndex = index;
                     menu.popup();

@@ -35,6 +35,8 @@ QtObject {
     readonly property url magnifierInactiveIcon: icons.inactiveIcon("magnifier")
     readonly property url plusActiveIcon: icons.activeIcon("plus")
     readonly property url plusInactiveIcon: icons.inactiveIcon("plus")
+    readonly property url addActiveIcon: icons.activeIcon("a6c")
+    readonly property url addInactiveIcon: icons.inactiveIcon("a6b")
 
     readonly property url momentsLabelIcon: icons.labelIcon("moments")                      // 朋友圈
     readonly property url scanQRCodeLabelIcon: icons.labelIcon("scan-qr-code")              // 二维码
@@ -45,6 +47,7 @@ QtObject {
     readonly property url favoritesLabelIcon: icons.labelIcon("favorites")                  // 收藏
     readonly property url myPostsLabelIcon: icons.labelIcon("my-posts")                     // 相册
     readonly property url settingsLabelIcon: icons.labelIcon("settings")                    // 设置
+    readonly property url faceLabelIcon: icons.labelIcon("face")                            // 表情
     readonly property url walletLabelIcon: icons.labelIcon("wallet")                        // 钱包
 
     readonly property url shareExcelIcon: icons.share("share-excel")

@@ -67,13 +67,10 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: personalPage.title
-                // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }
@@ -86,8 +83,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -105,9 +100,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Notificatons")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/NotificationsSettingsPage.qml"));
                         }
@@ -121,9 +114,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Do Not Disturb")
-                        fontPointSize: constant.middleFontPointSize + 1.0
 
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/DoNotDisturbSettingsPage.qml"));
@@ -138,9 +129,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Chat")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/ChatSettingsPage.qml"))
                         }
@@ -154,9 +143,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Privacy")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/PrivacySettingsPage.qml"))
                         }
@@ -170,9 +157,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("General")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/GeneralSettingsPage.qml"))
                         }
@@ -186,9 +171,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("My Account")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/MyAccountSettingsPage.qml"))
                         }
@@ -199,11 +182,7 @@ Page {
                     Layout.fillWidth: true
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
-                        iconWidth: 40
-                        iconHeight: 40
                         labelText:  qsTr("About")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: {
                             __PushPage(Qt.resolvedUrl("./Settings/AboutPage.qml"))
                         }
@@ -217,16 +196,11 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
-                        iconWidth: 40
-                        iconHeight: 40
                         labelText:  qsTr("Log Out")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: messageDialog.open()
                         MessageDialog {
                             id: messageDialog
                             title: qsTr("Log Out")
-//                            informativeText: qsTr("Clear all message history")
                             standardButtons: StandardButton.Yes | StandardButton.Cancel
                             onYes: console.log("Yes")
                             onRejected: console.log("Cancel")

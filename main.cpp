@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     app.setApplicationName("WellChat");
     app.setOrganizationDomain("github.com/GDPURJYFS");
     app.setOrganizationName("GDPURJYFS");
+    app.setApplicationVersion("0.0.1");
     //! [0]
 
     QQmlApplicationEngine engine;

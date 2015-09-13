@@ -51,13 +51,10 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: notificationsPage.title
-                // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }
@@ -71,8 +68,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -91,9 +86,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Notificatons")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             id: switch1
                             checked: false
@@ -103,11 +96,14 @@ Page {
                         }
                     }
 
-                    Rectangle {
-                        Layout.fillWidth: true; Layout.leftMargin: 40; Layout.rightMargin: 40
-                        height: 65
+                    Item {
+                        width: notificationsPage.width
+                        height: label.height
                         Label {
-                            width: parent.width
+                            id: label
+                            anchors.right: parent.right
+                            anchors.left: parent.left
+                            anchors.margins: 10
                             color: "#666"
                             font.family: "微软雅黑"
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -126,9 +122,7 @@ Page {
                     IconLabel {
                         visible: switch1.checked
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Start")
-                        fontPointSize: constant.middleFontPointSize + 1.0
 
                         Label {
                             anchors.right: parent.right
@@ -152,9 +146,7 @@ Page {
                     IconLabel {
                         visible: switch1.checked
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("End")
-                        fontPointSize: constant.middleFontPointSize + 1.0
 
                         Label {
                             anchors.right: parent.right

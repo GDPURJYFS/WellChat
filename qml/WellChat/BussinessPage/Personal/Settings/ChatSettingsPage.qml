@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "../../../Component"
 import Sparrow 1.0
+
 Page {
     id: chatSettnigsPage
     title: qsTr("Chat")
@@ -52,13 +53,11 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: chatSettnigsPage.title
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }
@@ -71,8 +70,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -90,9 +87,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Turn Off Speaker")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: false
                             anchors.right: parent.right
@@ -109,9 +104,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Press Enter to Send")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: false
                             anchors.right: parent.right
@@ -128,9 +121,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Background")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -141,9 +132,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("My Stickers")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                 } // First Settings Ground
@@ -153,9 +142,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Backup/Restore Chat History")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -166,9 +153,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Clear Chat History")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         onClicked: messageDialog.open()
                         MessageDialog {
                             id: messageDialog

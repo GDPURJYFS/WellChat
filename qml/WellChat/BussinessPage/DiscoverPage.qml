@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
@@ -25,31 +25,36 @@ Page {
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
+
+            FontMetrics {
+                id: fontMetrics
+                font.family: ApplicationSettings.fontFamily
+                font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+            }
+
             ColumnLayout {
                 id: column
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
-                spacing: 20
-
+                spacing: fontMetrics.height
                 Item {  width: parent.spacing;  height: parent.height }
 
                 IconLabel {
                     Layout.fillWidth: true
-                    height: 70
-                    iconWidth: 40
-                    iconHeight: 40
                     iconSource: constant.momentsLabelIcon
                     labelText:  qsTr("Moments")
-                    fontPointSize: constant.middleFontPointSize + 1.0
+                    onClicked: {
+                        __PushPage(Qt.resolvedUrl("./Discover/MomentsPage/MomentsPage.qml"))
+                    }
 
                     Image {
                         id: momentsCurrentActiveFriend
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.rightMargin: column.spacing
-                        width: 60
-                        height: 60
+                        width: parent.height
+                        height: parent.height
                         sourceSize: Qt.size(width, height)
                         source: constant.testPic
                     }
@@ -67,12 +72,8 @@ Page {
                         spacing: 0
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.scanQRCodeLabelIcon
                             labelText:  qsTr("Scan QR Code")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
 
                         Separator {
@@ -83,12 +84,8 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.shakeLabelIcon
                             labelText:  qsTr("Shake")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
                     }
                 } // Second Group
@@ -104,12 +101,8 @@ Page {
                         spacing: 0
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.peopleNearbyLabelIcon
                             labelText:  qsTr("People Nearby")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
 
                         Separator {
@@ -120,24 +113,16 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.driftBottleLabelIcon
                             labelText:  qsTr("Drift Bottle")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
                     }
                 } // Thrid Group
 
                 IconLabel {
                     Layout.fillWidth: true
-                    height: 70
-                    iconWidth: 40
-                    iconHeight: 40
                     iconSource: constant.gamesLabelIcon
                     labelText:  qsTr("Games")
-                    fontPointSize: constant.middleFontPointSize + 1.0
                 } // First Group
             } // Main ColumnLayout
         } // content

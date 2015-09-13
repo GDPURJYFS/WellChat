@@ -105,16 +105,17 @@ Page {
                 }
             }
 
-            SampleButton {
-                Layout.alignment: Qt.AlignRight
-                text: qsTr("Send")
-                onClicked:  {
-                    if(textInput.text != "" ) {
-                        chatModel.append({"chatContext":textInput.text});
-                        textInput.text = "";
+                SampleButton {
+                    id: sendButton
+                    Layout.alignment: Qt.AlignRight
+                    text: qsTr("Send")
+                    onClicked:  {
+                        if(textInput.text != "" ) {
+                            chatModel.append({"chatContext":textInput.text});
+                            textInput.text = "";
+                        }
                     }
                 }
-            }
             Item { width: 5; height: 5 }
         }
     }

@@ -70,8 +70,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -90,9 +88,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Well Chat ID")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Label {
                             text: "qyvlik"
                             anchors.right: parent.right
@@ -113,9 +109,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("QQ ID")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Label {
                             text: "1234567890"
                             anchors.right: parent.right
@@ -135,9 +129,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Phone")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Label {
                             text: "13588880000"
                             anchors.right: parent.right
@@ -157,9 +149,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Email")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Label {
                             text: qsTr("Verified")
                             anchors.right: parent.right
@@ -180,9 +170,7 @@ Page {
                     title: qsTr("Security")
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Voiceprint")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -192,9 +180,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Password")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -204,9 +190,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Account Protection")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -216,18 +200,17 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Mobile Security")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
-
-                    Rectangle {
-                        Layout.fillWidth: true; Layout.leftMargin: 40; Layout.rightMargin: 40
-                        height: 65
+                    Item {
+                        width: myAccountSettingsPage.width
+                        height: label.height
                         Label {
-                            id: label1
-                            width: parent.width
+                            id: label
+                            anchors.right: parent.right
+                            anchors.left: parent.left
+                            anchors.margins: 10
                             color: "#666"
                             font.family: "微软雅黑"
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -235,6 +218,7 @@ Page {
                             text: qsTr("Go to the Well Chat Security Center for account security issues.")
                         }
                     }
+
                 } // Second Settings Group
 
             } // Main ColumnLayout

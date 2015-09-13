@@ -52,13 +52,11 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: aboutPage.title
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }
@@ -71,8 +69,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -98,9 +94,7 @@ Page {
                     Layout.fillWidth: true
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Rete WellChat")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -111,9 +105,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Features")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -123,9 +115,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Help & Feedback")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                     Separator {
@@ -135,9 +125,7 @@ Page {
                     }
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Version Update")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Label {
                             text: qsTr("1.0.0")
                             anchors.right: parent.right

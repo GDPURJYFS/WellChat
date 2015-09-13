@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.4
 import "../../../Component"
+import Sparrow 1.0
 
 Item  {
     id: settingsGroup
@@ -21,16 +22,14 @@ Item  {
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.top: parent.top
-        height: title.text != "" ? title.height : 0
+        height: title.text != "" ? title.height : 1
 
-        Label {
+        SampleLabel {
             id: title
             color: "#666"
             anchors.left: parent.left
             anchors.leftMargin: 20
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "微软雅黑"
-            font.pointSize: constant.middleFontPointSize
         }
     }
 
@@ -48,7 +47,7 @@ Item  {
         id: columnLayout
         anchors.right: parent.right
         anchors.left: parent.left
-        anchors.top: titleArea.height != 0 ? titleArea.bottom : parent.top
+        anchors.top: parent.top
         anchors.topMargin: titleArea.height
         spacing: 0
     }

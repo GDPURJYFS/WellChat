@@ -70,8 +70,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -89,11 +87,7 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Landscape Display")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Switch {
                                 checked: true
                                 anchors.right: parent.right
@@ -109,11 +103,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Low-bitrate Recording")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Switch {
                                 checked: true
                                 anchors.right: parent.right
@@ -129,11 +119,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Low-bitrate Recording")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: qsTr("3G / 4G and Wi-Fi")
                                 anchors.right: parent.right
@@ -153,11 +139,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Auto-Update WellChat")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: qsTr("Never")
                                 anchors.right: parent.right
@@ -177,11 +159,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Language")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: qsTr("English")
                                 anchors.right: parent.right
@@ -201,11 +179,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Font Size")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: qsTr("Standard")
                                 anchors.right: parent.right
@@ -225,11 +199,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Features")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
 
                         Separator {
@@ -239,11 +209,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Data Usage")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
 
                         Separator {
@@ -253,11 +219,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Web WellChat")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
 
                         Separator {
@@ -267,11 +229,7 @@ Page {
                         }
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             labelText:  qsTr("Manage Storage")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
                 } // First Settings Group
             } // Main ColumnLayout

@@ -109,20 +109,20 @@ Page {
                         Item {  width: parent.spacing;  height: parent.height }
 
                         Image {
-                            height: 110
-                            width: 110
+                            height: column1.height * 1.2
+                            width: column1.height * 1.2
                             sourceSize: Qt.size(width, height)
                             source: constant.testPic
                         }
 
                         ColumnLayout {
+                            id: column1
                             Layout.fillHeight: true
                             Row {
                                 spacing: 10
-                                Label {
+                                SampleLabel {
                                     id: personName
                                     text: "小屁孩"
-                                    font.family: "微软雅黑"
                                 }
                                 Image {
                                     height: personName.height
@@ -131,20 +131,24 @@ Page {
                                     source: constant.maleSampleIcon
                                 }
                             }
-                            Label {
+                            SampleLabel {
+                                id: showId
                                 text: "ID: " + "qyvlik"
-                                font.family: "微软雅黑"
+                                color: "#888"
+                            }
+                            SampleLabel {
+                                id: showNick
+                                text: "昵称: " + "qyvlik"
                                 color: "#888"
                             }
                         }
 
                         Item { Layout.fillWidth: true }
 
-                    }
-                }
+                    } // rowLayout1
+                } // colmnLayout1Parent
 
                 Rectangle {
-                    id: colmnLayout2Parent
                     Layout.fillWidth: true
                     height: columnLayout2.height
                     color: "white"
@@ -155,9 +159,7 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
                             labelText:  qsTr("Region")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: qsTr("Guangdong Shantou")
                                 anchors.right: parent.right
@@ -166,7 +168,6 @@ Page {
                                 color: "#666"
                                 font.family: "微软雅黑"
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                font.pointSize: constant.smallFontPointSize + 2
                             }
                         }
 
@@ -178,9 +179,7 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
                             labelText:  qsTr("What's Up")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                             Label {
                                 text: "逝水流年"
                                 anchors.right: parent.right
@@ -189,7 +188,6 @@ Page {
                                 color: "#666"
                                 font.family: "微软雅黑"
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                font.pointSize: constant.smallFontPointSize + 2
                             }
                         }
 
@@ -202,11 +200,10 @@ Page {
                         IconLabel {
                             // 相册
                             Layout.fillWidth: true
-                            height: 90
                             labelText:  qsTr("Album")
-                            fontPointSize: constant.middleFontPointSize + 1.0
 
                             Row {
+                                id: row1
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.right: parent.right
                                 anchors.rightMargin: 10
@@ -244,28 +241,24 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
                             labelText:  qsTr("From")
-                            fontPointSize: constant.middleFontPointSize + 1.0
-                            Label {
+                            SampleLabel {
                                 text: qsTr("Group Chat")
                                 anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: column.spacing
                                 color: "#666"
-                                font.family: "微软雅黑"
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                font.pointSize: constant.smallFontPointSize + 2
                             }
                         }
-                    }
-                }
+                    } // columnLayout2
+                } // colmnLayout2Parent
 
                 SampleButton {
                     text: "Message"
                     Layout.fillWidth: true
-                    Layout.margins: 10
-                    buttonSize: constant.bigFontPointSize
+                    Layout.rightMargin: 50
+                    Layout.leftMargin: 50
                     onClicked: {
                         // stackView.pop();
                         __PushPage(Qt.resolvedUrl("./Chat/ChatPage.qml"), {username: "小屁孩"});
@@ -275,14 +268,13 @@ Page {
                 SampleButton {
                     text: "Free Call"
                     Layout.fillWidth: true
-                    Layout.margins: 10
-                    buttonSize: constant.bigFontPointSize
+                    Layout.rightMargin: 50
+                    Layout.leftMargin: 50
                     onClicked: {
                     }
                 }
-
-            }
-        }
-    }
+            } // column
+        } // content
+    }// scrollview
 }
 

@@ -51,13 +51,10 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: notificationsPage.title
-                // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }
@@ -70,8 +67,6 @@ Page {
 
         Item {
             id: content
-
-            //width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             width: page.width
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
@@ -90,9 +85,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("New Message Alerts")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -109,9 +102,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Notificatons")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -120,12 +111,14 @@ Page {
                         }
                     }
 
-                    Rectangle {
-                        Layout.fillWidth: true; Layout.leftMargin: 40; Layout.rightMargin: 40
-                        height: 65
+                    Item {
+                        width: notificationsPage.width
+                        height: label.height
                         Label {
-                            id: label1
-                            width: parent.width
+                            id: label
+                            anchors.right: parent.right
+                            anchors.left: parent.left
+                            anchors.margins: 10
                             color: "#666"
                             font.family: "微软雅黑"
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -133,8 +126,6 @@ Page {
                             text: qsTr("If turn off, notifications for WellChat messages will not contain the sender and summary.")
                         }
                     }
-
-
                 }
 
 
@@ -143,9 +134,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Sound")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -162,9 +151,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Alert Sound")
-                        fontPointSize: constant.middleFontPointSize + 1.0
 
                         Label {
                             anchors.right: parent.right
@@ -186,9 +173,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("In-App Vibrate")                // 震动
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -205,9 +190,7 @@ Page {
                     Layout.fillWidth: true
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Moments Upadates")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -216,11 +199,14 @@ Page {
                         }
                     }
 
-                    Rectangle {
-                        Layout.fillWidth: true; Layout.leftMargin: 40; Layout.rightMargin: 40
-                        height: 60
+                    Item {
+                        width: notificationsPage.width
+                        height: labe2.height
                         Label {
-                            width: parent.width
+                            id: labe2
+                            anchors.right: parent.right
+                            anchors.left: parent.left
+                            anchors.margins: 10
                             color: "#666"
                             font.family: "微软雅黑"
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere

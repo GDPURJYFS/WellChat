@@ -89,9 +89,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Friend Confirmation")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -108,9 +106,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Find QQ Contacts")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -127,9 +123,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Find Mobile Contacts")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -146,9 +140,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Blocked List")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                     }
 
                 } // First Setting Group
@@ -159,9 +151,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Find Me by WeChat ID")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -178,9 +168,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Find Me by Phone No.")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -197,9 +185,7 @@ Page {
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Find Me By QQ ID")                // 震动
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right
@@ -214,30 +200,40 @@ Page {
                     Layout.fillWidth: true
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Don't Share My Moments")
-                        fontPointSize: constant.middleFontPointSize + 1.0
+                    }
+
+                    Separator {
+                        Layout.fillWidth: true; Layout.leftMargin: 10; Layout.rightMargin: 10
+                        color: "#666"; orientation: Qt.Horizontal ;
+                        anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Hide User's Moments")
-                        fontPointSize: constant.middleFontPointSize + 1.0
+                    }
+
+                    Separator {
+                        Layout.fillWidth: true; Layout.leftMargin: 10; Layout.rightMargin: 10
+                        color: "#666"; orientation: Qt.Horizontal ;
+                        anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Moments Groups")
-                        fontPointSize: constant.middleFontPointSize + 1.0
+                    }
+
+                    Separator {
+                        Layout.fillWidth: true; Layout.leftMargin: 10; Layout.rightMargin: 10
+                        color: "#666"; orientation: Qt.Horizontal ;
+                        anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     IconLabel {
                         Layout.fillWidth: true
-                        height: 70
                         labelText:  qsTr("Public Moments")
-                        fontPointSize: constant.middleFontPointSize + 1.0
                         Switch {
                             checked: true
                             anchors.right: parent.right

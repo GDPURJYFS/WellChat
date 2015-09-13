@@ -35,8 +35,11 @@ Page {
         height: chatsView.height
         model: chatItemsModel
         highlightMoveDuration: 1000
+        highlightRangeMode: ListView.ApplyRange
 
-/////////////////////////////////////////////////////////////////////////////////////////
+        // 控制滚动速度
+        maximumFlickVelocity: 5000
+        /////////////////////////////////////////////////////////////////////////////////////////
         /*
         highlightRangeMode: ListView.StrictlyEnforceRange
         readonly property alias topSideBarIsOpen: listView.__topSideBarIsOpen
@@ -69,7 +72,7 @@ Page {
             color: "black"
         }
         //*/
-/////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////
         add: Transition {
             NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 400 }
             NumberAnimation { property: "scale"; from: 0; to: 1.0; duration: 400 }

@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.2
 StatusBar {
     id: statusBar
 
-    property color backgroundColor: "#ccc"
+    property color backgroundColor: "white"
 
     style: StatusBarStyle {
         background: Rectangle {

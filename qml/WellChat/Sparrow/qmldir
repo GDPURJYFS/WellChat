@@ -7,7 +7,8 @@ Page 1.0 ./Page.qml
 PageStackWindow 1.0 ./PageStackWindow.qml
 TopBar 1.0 ./TopBar.qml
 SampleLabel 1.0 ./SampleLabel.qml
+WebPage 1.0 ./WebPage.qml
 
 internal QObject ./QObject.qml
 
-# UI 1.0 ./UI.js
+UI 1.0 ./UI.js

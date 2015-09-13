@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
@@ -24,12 +24,18 @@ Page {
             // width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
+            FontMetrics {
+                id: fontMetrics
+                font.family: ApplicationSettings.fontFamily
+                font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+            }
+
             ColumnLayout {
                 id: column
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
-                spacing: 20
+                spacing: fontMetrics.height
 
                 Item {  width: parent.spacing;  height: parent.height }
 
@@ -46,28 +52,43 @@ Page {
                         Item {  width: parent.spacing;  height: parent.height }
 
                         Image {
-                            height: 110
-                            width: 110
+                            height: column1.height * 1.2
+                            width: column1.height * 1.2
                             sourceSize: Qt.size(width, height)
                             source: constant.testPic
                         }
 
                         ColumnLayout {
+                            id: column1
                             Layout.fillHeight: true
-                            Label {
-                                text: "小屁孩"
-                                font.family: "微软雅黑"
+                            Row {
+                                spacing: 10
+                                SampleLabel {
+                                    id: personName
+                                    text: "小屁孩"
+                                }
+                                Image {
+                                    height: personName.height
+                                    width: personName.height
+                                    sourceSize: Qt.size(width, height)
+                                    source: constant.maleSampleIcon
+                                }
                             }
-                            Label {
+                            SampleLabel {
+                                id: showId
                                 text: "ID: " + "qyvlik"
-                                font.family: "微软雅黑"
                                 color: "#888"
                             }
+//                            SampleLabel {
+//                                id: showNick
+//                                text: "昵称: " + "qyvlik"
+//                                color: "#888"
+//                            }
                         }
 
                         Item { Layout.fillWidth: true }
 
-                    }
+                    } // rowLayout1
                 }
 
                 Rectangle {
@@ -81,12 +102,11 @@ Page {
                         spacing: 0
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.myPostsLabelIcon
                             labelText:  qsTr("My Posts")
-                            fontPointSize: constant.middleFontPointSize + 1.0
+                            onClicked: {
+                                __PushPage(Qt.resolvedUrl("./Personal/MyPostsPage.qml"), {} );
+                            }
                         }
 
                         Separator {
@@ -97,34 +117,28 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            height: 70
-                            iconWidth: 40
-                            iconHeight: 40
                             iconSource: constant.favoritesLabelIcon
                             labelText:  qsTr("Favorites")
-                            fontPointSize: constant.middleFontPointSize + 1.0
                         }
                     }
                 }
 
                 IconLabel {
                     Layout.fillWidth: true
-                    height: 70
-                    iconWidth: 40
-                    iconHeight: 40
                     iconSource: constant.walletLabelIcon
                     labelText:  qsTr("Wallet")
-                    fontPointSize: constant.middleFontPointSize + 1.0
                 }
 
                 IconLabel {
                     Layout.fillWidth: true
-                    height: 70
-                    iconWidth: 40
-                    iconHeight: 40
+                    iconSource: constant.faceLabelIcon
+                    labelText:  qsTr("Face")
+                }
+
+                IconLabel {
+                    Layout.fillWidth: true
                     iconSource: constant.settingsLabelIcon
                     labelText:  qsTr("Settings")
-                    fontPointSize: constant.middleFontPointSize + 1.0
                     onClicked: {
                         __PushPage(Qt.resolvedUrl("./Personal/SettingsPage.qml"), {} );
                     }

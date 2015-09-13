@@ -5,19 +5,27 @@
  * FLatUI element FlatTextField
  *
 */
-import QtQuick 2.4
+import QtQuick 2.5
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.4
-import "./UI.js" as UI
+import Sparrow 1.0
 
 TextArea {
     id:textArea
-    font.pointSize: UI.normalFontPointSize
-    font.family: "微软雅黑"
+//    font.pointSize: UI.normalFontPointSize
+//    font.family: "微软雅黑"
+    font.family: ApplicationSettings.fontFamily
+    font.pointSize: ApplicationSettings.defaultNormalFontPointSize
     wrapMode: TextEdit.Wrap
     backgroundVisible: false
     // 微信绿 #71d01d
     // 普通灰 #ccc
+
+    FontMetrics {
+        id: fontMetrics
+        font.family: ApplicationSettings.fontFamily
+        font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+    }
 
     Rectangle {
         width: parent.width - 10
@@ -25,6 +33,6 @@ TextArea {
         height: 1
         color: parent.focus? "#71d01d" : "#ccc"
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
+        anchors.bottomMargin: fontMetrics.height * 0.2
     }
 }

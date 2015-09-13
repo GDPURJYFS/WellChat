@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Layouts 1.1
 import "./UI.js" as UI
+import Sparrow 1.0
 
 Rectangle {
     id: icon
@@ -43,7 +44,7 @@ Rectangle {
             }
         }
 
-        Text {
+        SampleLabel {
             id: iconText
             anchors.horizontalCenter: parent.horizontalCenter
             Layout.fillWidth: true
@@ -51,8 +52,13 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: UI.smallFontPointSize
             color: activeIconImage.opacity == 0? "#999999": "#45c01a"
-            font.family: "微软雅黑"
         }
+
+        Item {
+            height: iconText.contentHeight * 0.3
+            width: iconText.contentHeight
+        }
+
     }
 
 
