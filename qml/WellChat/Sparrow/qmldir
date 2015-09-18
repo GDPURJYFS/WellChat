@@ -1,6 +1,5 @@
 module Sparrow
 
-# singleton ApplicationSettings 1.0  ./ApplicationSettings.qml
 singleton GeneralSettings 1.0 ./GeneralSettings.qml
 
 BottomBar 1.0 ./BottomBar.qml
