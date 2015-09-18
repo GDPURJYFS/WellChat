@@ -22,21 +22,25 @@ WellChat is a Application that is a WeChat-like APP by qml.
 
 ![](Screenshot/480x800/WellChat-04.png)
 
-### 540 * 960
+### 1080P
 
 微信界面
 
-![](Screenshot/540x960/WeChat.jpg)
+![](Screenshot/1080x1920/WellChat01.jpg)
 
-仿制界面
+![](Screenshot/1080x1920/WellChat02.jpg)
 
-![](Screenshot/540x960/WellChat01.jpg)
+![](Screenshot/1080x1920/WellChat03.jpg)
 
-![](Screenshot/540x960/WellChat02.jpg)
+![](Screenshot/1080x1920/WellChat04.jpg)  
 
-![](Screenshot/540x960/WellChat03.jpg)
+![](Screenshot/1080x1920/WellChat05.jpg)  
 
-![](Screenshot/540x960/WellChat04.jpg)
+![](Screenshot/1080x1920/WellChat06.jpg)
+
+![](Screenshot/1080x1920/WellChat07.jpg)
+
+![](Screenshot/1080x1920/WellChat08.jpg)
 
 ## QML开发安卓应用上的局限
 
