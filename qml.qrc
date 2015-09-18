@@ -31,6 +31,41 @@
         <file>qml/WellChat/Component/UI.js</file>
         <file>qml/WellChat/resource/background/active/chat-bubble.png</file>
         <file>qml/WellChat/resource/background/inactive/chat-bubble.png</file>
+        <file>qml/WellChat/resource/html/css/mui.css</file>
+        <file>qml/WellChat/resource/html/css/mui.min.css</file>
+        <file>qml/WellChat/resource/html/css/style.css</file>
+        <file>qml/WellChat/resource/html/fonts/mui.ttf</file>
+        <file>qml/WellChat/resource/html/images/chilun.png</file>
+        <file>qml/WellChat/resource/html/images/footer1.png</file>
+        <file>qml/WellChat/resource/html/images/footer2.png</file>
+        <file>qml/WellChat/resource/html/images/footer3.png</file>
+        <file>qml/WellChat/resource/html/images/jiaoxiaoslider.jpg</file>
+        <file>qml/WellChat/resource/html/images/liudeh.jpg</file>
+        <file>qml/WellChat/resource/html/images/user1.png</file>
+        <file>qml/WellChat/resource/html/images/user2.png</file>
+        <file>qml/WellChat/resource/html/images/user3.png</file>
+        <file>qml/WellChat/resource/html/images/user4.png</file>
+        <file>qml/WellChat/resource/html/images/user5.png</file>
+        <file>qml/WellChat/resource/html/images/user6.png</file>
+        <file>qml/WellChat/resource/html/images/user7.png</file>
+        <file>qml/WellChat/resource/html/images/userheader.png</file>
+        <file>qml/WellChat/resource/html/images/复制 liudeh.jpg</file>
+        <file>qml/WellChat/resource/html/js/jquery.min.js</file>
+        <file>qml/WellChat/resource/html/js/mui.js</file>
+        <file>qml/WellChat/resource/html/js/mui.min.js</file>
+        <file>qml/WellChat/resource/html/baoming.html</file>
+        <file>qml/WellChat/resource/html/index.html</file>
+        <file>qml/WellChat/resource/html/jiaxiaokecheng.html</file>
+        <file>qml/WellChat/resource/html/jingyingban.html</file>
+        <file>qml/WellChat/resource/html/jingyingyuyue.html</file>
+        <file>qml/WellChat/resource/html/putongban.html</file>
+        <file>qml/WellChat/resource/html/putongyuyue.html</file>
+        <file>qml/WellChat/resource/html/shangwuban.html</file>
+        <file>qml/WellChat/resource/html/shangwuyuyue.html</file>
+        <file>qml/WellChat/resource/html/shuangxiuban.html</file>
+        <file>qml/WellChat/resource/html/shuangxiuyuyue.html</file>
+        <file>qml/WellChat/resource/html/youhuaban.html</file>
+        <file>qml/WellChat/resource/html/youhuayuyue.html</file>
         <file>qml/WellChat/resource/icons/bar-icons/active/a6c.png</file>
         <file>qml/WellChat/resource/icons/bar-icons/active/back.png</file>
         <file>qml/WellChat/resource/icons/bar-icons/active/chat.png</file>
@@ -126,6 +161,7 @@
         <file>qml/WellChat/Sparrow/+android/WebPage.qml</file>
         <file>qml/WellChat/Sparrow/ApplicationSettings.qml</file>
         <file>qml/WellChat/Sparrow/BottomBar.qml</file>
+        <file>qml/WellChat/Sparrow/GeneralSettings.qml</file>
         <file>qml/WellChat/Sparrow/Page.qml</file>
         <file>qml/WellChat/Sparrow/PageStackWindow.qml</file>
         <file>qml/WellChat/Sparrow/qmldir</file>

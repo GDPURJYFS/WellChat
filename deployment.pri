@@ -3,6 +3,7 @@ android-no-sdk {
     export(target.path)
     INSTALLS += target
 } else:android {
+    QT += androidextras
     x86 {
         target.path = /libs/x86
     } else: armeabi-v7a {

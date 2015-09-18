@@ -18,7 +18,7 @@ Page {
         RowLayout {
             anchors.fill: parent
             // spacing: 20
-            Label {
+            SampleLabel {
                 Layout.leftMargin: 20
                 text: title
                 color: "white"
@@ -42,7 +42,7 @@ Page {
                 activeIconSource: constant.magnifierActiveIcon
                 inactiveIconSource: constant.magnifierInactiveIcon
                 onClicked: {
-
+                    tryToNotify("我操！");
                 }
             }
 
@@ -53,7 +53,6 @@ Page {
                 activeIconSource: constant.plusActiveIcon
                 inactiveIconSource: constant.plusInactiveIcon
                 onClicked: {
-
                 }
             }
         }
@@ -67,7 +66,7 @@ Page {
             id: iconBar
             spacing: 0
             anchors.fill: parent
-            readonly property var iconNames:["Chat","Contacts","Discover", "Me"]
+            readonly property var iconNames: ["Chat","Contacts","Discover", "Me"]
             function getActiveIconUrl(index) {
                 return "./resource/icons/bar-icons/active/"+iconNames[index].toLowerCase()+".png";
             }
@@ -135,6 +134,15 @@ Page {
             stackView: mainPage.stackView
             width: mainListView.width
             height: mainListView.height
+        }
+    }
+
+    function tryToNotify(notifiString) {
+        try {
+            console.log("here is qml, will send", notifiString);
+            notificationClient.sendNotification(notifiString);
+        }catch(e) {
+            console.log(e)
         }
     }
 }

@@ -5,9 +5,8 @@ import Sparrow 1.0
 Rectangle {
     id: page
     focus: true
+
     color: "#ebebeb"
-    //    implicitWidth: 640
-    //    implicitHeight: 400
 
     default property alias data: content.data
 
@@ -17,8 +16,6 @@ Rectangle {
     property string title
     property PageStackWindow pageStackWindow: null
 
-    readonly property int stackIndex: Stack.index
-    readonly property int status : Stack.status
     property StackView stackView: null
 
     property Item background: null
@@ -27,6 +24,10 @@ Rectangle {
 
     property bool showTopBar: true
     property bool showBottomBar: true
+
+    property alias topBarArea: topBarParent
+    property alias bottomBarArea: bottomBarParent
+    property alias backgroundArea: backgroundParent
 
     Loader {
         anchors.fill: parent
@@ -44,7 +45,7 @@ Rectangle {
                 } else if(children[0] != null) {
                     children[0].anchors.fill = backgroundParent;
                 }
-            }            
+            }
         }
 
         Item {
@@ -63,6 +64,7 @@ Rectangle {
         Item {
             id: topBarParent
             anchors.top: parent.top
+            anchors.topMargin: 0
             anchors.right: parent.right
             anchors.left: parent.left
             height: children[0] != null ? children[0].height: 0
@@ -97,7 +99,6 @@ Rectangle {
                 Transition {
                     from: "ShowTopBar"
                     to: "HideTopBar"
-
                     NumberAnimation {
                         property: "anchors.topMargin"
                         duration: 500
@@ -122,11 +123,6 @@ Rectangle {
             anchors.right: parent.right
             anchors.left: parent.left
             height: children[0] != null ? children[0].height: 0
-//            onChildrenChanged: {
-//                if(children[0] != null && children[1] != null ) {
-//                    children[0].destory();
-//                }
-//            }
 
             state: "ShowBottomBar"
 
@@ -185,14 +181,15 @@ Rectangle {
 
         try {
             if(component.status === Component.Ready) {
-                // 防止点击过快，开启过多画面
-                if(ApplicationSettings.defaultPageEnablePush) {
-                    page.enabled = false;
-                }
+
+              // 防止点击过快，开启过多画面
+                page.enabled = false;
 
                 properties.focus = true;
+
                 properties.width = Qt.binding(function(){ return stackView.width });
                 properties.height = Qt.binding(function(){ return stackView.height });
+
                 properties.stackView = page.stackView;
 
                 var loadPage = component.createObject(page.stackView, properties);
@@ -203,11 +200,6 @@ Rectangle {
                     // 防止焦点丢失
                     page.focus = true;
                 });
-
-                //                loadPage.focus = true;
-                //                loadPage.width = Qt.binding(function(){ return stackView.width });
-                //                loadPage.height = Qt.binding(function(){ return stackView.height });
-                //                loadPage.stackView = page.stackView;
                 stackView.push({item: loadPage, destroyOnPop:true});
                 return loadPage;
             } else {
@@ -224,6 +216,7 @@ Rectangle {
             return null;
         }
     }
+
     Component.onCompleted: entered();
 
     Component.onDestruction: exited();

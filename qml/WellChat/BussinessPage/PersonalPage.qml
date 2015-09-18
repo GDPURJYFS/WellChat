@@ -26,8 +26,8 @@ Page {
 
             FontMetrics {
                 id: fontMetrics
-                font.family: ApplicationSettings.fontFamily
-                font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+                font.family: GeneralSettings.generalfontFamily
+                font.pointSize: GeneralSettings.generalFontPointSize
             }
 
             ColumnLayout {
@@ -76,7 +76,7 @@ Page {
                             }
                             SampleLabel {
                                 id: showId
-                                text: "ID: " + "qyvlik"
+                                text: "ID: qyvlik"
                                 color: "#888"
                             }
 //                            SampleLabel {

@@ -133,12 +133,12 @@ Page {
                             }
                             SampleLabel {
                                 id: showId
-                                text: "ID: " + "qyvlik"
+                                text: "ID: qyvlik"
                                 color: "#888"
                             }
                             SampleLabel {
                                 id: showNick
-                                text: "昵称: " + "qyvlik"
+                                text: "昵称: qyvlik"
                                 color: "#888"
                             }
                         }

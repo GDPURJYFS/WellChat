@@ -1,6 +1,6 @@
 .pragma library
 
-console.log("Window UI Config");
+// console.log("Window UI Config");
 
 var defaultFontFamily = "Microsoft YaHei UI"; // 微软雅黑
 //var defaultNormalFontPointSize = 9;

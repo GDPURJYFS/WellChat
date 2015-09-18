@@ -12,10 +12,8 @@ import Sparrow 1.0
 
 TextArea {
     id:textArea
-//    font.pointSize: UI.normalFontPointSize
-//    font.family: "微软雅黑"
-    font.family: ApplicationSettings.fontFamily
-    font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+    font.family: GeneralSettings.generalfontFamily
+    font.pointSize: GeneralSettings.generalFontPointSize
     wrapMode: TextEdit.Wrap
     backgroundVisible: false
     // 微信绿 #71d01d
@@ -23,8 +21,8 @@ TextArea {
 
     FontMetrics {
         id: fontMetrics
-        font.family: ApplicationSettings.fontFamily
-        font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+        font.family: GeneralSettings.generalfontFamily
+        font.pointSize: GeneralSettings.generalFontPointSize
     }
 
     Rectangle {

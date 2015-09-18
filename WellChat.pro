@@ -12,6 +12,7 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+include(Sparrow/Sparrow.pri)
 
 DISTFILES += \
     android/AndroidManifest.xml \
@@ -23,3 +24,6 @@ DISTFILES += \
     android/gradlew.bat
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+OTHER_FILES += android/src/org/GDPURJYFS/WellChat/NotificationClient.java
+

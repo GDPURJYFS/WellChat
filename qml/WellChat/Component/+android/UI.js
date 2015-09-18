@@ -2,7 +2,7 @@
 // 本文件是 安卓
 .pragma library
 
-console.log("UI font point size", "android")
+// console.log("UI font point size", "android")
 
 var smallFontPointSize = 12           // 主页面下的icon的文本例如chat等
 var middleFontPointSize = 13

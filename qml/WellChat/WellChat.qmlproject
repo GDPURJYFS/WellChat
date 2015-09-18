@@ -7,15 +7,23 @@ Project {
     QmlFiles {
         directory: "."
     }
+
     JavaScriptFiles {
         directory: "."
     }
+
     ImageFiles {
         directory: "."
     }
+
     Files {
         directory: "."
         filter: "*.md"
+    }
+
+    Files {
+        directory: "."
+        filter: "*.html"
     }
 
     Files {

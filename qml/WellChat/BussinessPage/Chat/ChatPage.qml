@@ -105,17 +105,18 @@ Page {
                 }
             }
 
-                SampleButton {
-                    id: sendButton
-                    Layout.alignment: Qt.AlignRight
-                    text: qsTr("Send")
-                    onClicked:  {
-                        if(textInput.text != "" ) {
-                            chatModel.append({"chatContext":textInput.text});
-                            textInput.text = "";
-                        }
+            SampleButton {
+                id: sendButton
+                Layout.alignment: Qt.AlignRight
+                text: qsTr("Send")
+                onClicked:  {
+                    if(textInput.text != "" ) {
+                        chatModel.append({"chatContext":textInput.text});
+                        tryToNotify(textInput.text);
+                        textInput.text = "";
                     }
                 }
+            }
             Item { width: 5; height: 5 }
         }
     }
@@ -195,6 +196,78 @@ Page {
                 sourceSize: Qt.size(width, height)
                 source: constant.testPic
             }
+        }
+    }
+
+    function tryToNotify(notifiString) {
+        try {
+            console.log("will send", notifiString);
+            notificationClient.sendNotification(notifiString);
+        }catch(e) {
+            console.log(e)
+        }
+    }
+
+    states: [
+        State {
+            name: "FixTopBar"
+            PropertyChanges {
+                target: chatPage.topBarArea
+                anchors.topMargin: try {
+                        return Keyboard.keyboardRectangle.height;
+                    } catch(e) {
+                        return 0;
+                    }
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "FixTopBar"
+            to: ""
+            NumberAnimation {
+                property: "anchors.topMargin"
+                duration: 350
+            }
+        },
+        Transition {
+            from: ""
+            to: "FixTopBar"
+            NumberAnimation {
+                property: "anchors.topMargin"
+                duration: 350
+            }
+        }
+    ]
+
+    function fixTopBar() {
+        chatPage.state = "FixTopBar";
+    }
+
+    function resetTopBar() {
+        chatPage.state = "";
+    }
+
+    signal keyboardOpen()
+    onKeyboardOpen: {
+        if(Keyboard.visible) {
+            console.log("Keyboard open");
+            fixTopBar();
+        } else {
+            console.log("Keyboard close");
+            resetTopBar();
+        }
+    }
+    Component.onCompleted: {
+         Qt.inputMethod.visibleChanged.connect(keyboardOpen);
+        try {
+            Keyboard.keyboardRectangleChanged.connect(function() {
+                console.log("here is qml ");
+                console.log(Keyboard.keyboardRectangle);
+            });
+        } catch(e) {
+            console.log(e)
         }
     }
 }

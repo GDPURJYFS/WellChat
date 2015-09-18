@@ -1,6 +1,6 @@
 .pragma library
 
-console.log("Android UI Config");
+// console.log("Android UI Config");
 
 var defaultFontFamily = "Microsoft YaHei UI"; // 微软雅黑
 //var defaultNormalFontPointSize = 16;

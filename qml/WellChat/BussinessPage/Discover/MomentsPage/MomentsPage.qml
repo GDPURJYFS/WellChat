@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import "../../../Component"
 import Sparrow 1.0
+import QtQuick.Window 2.2
 
 Page {
     id: momentsPage
@@ -62,22 +63,33 @@ Page {
     }
 
     Item {
-        id: loadProgressArea
-        width: parent.width
-        height: 3
-        Rectangle {
-            height: parent.height
-            width: parent.width * (1/webPage.loadProgress)
-            color: "blue"
+        anchors.fill: parent
+
+        Item {
+            id: loadProgressArea
+            width: momentsPage.width
+            height: Screen.pixelDensity
+            visible: webPage.loadProgress != 100
+            Rectangle {
+                height: parent.height
+                width: parent.width * (100/webPage.loadProgress)
+                color: "green"
+            }
+        }
+
+        WebPage {
+            id: webPage
+            width: momentsPage.width
+            anchors.top: loadProgressArea.bottom
+            anchors.bottom: parent.bottom
+            url: {
+                if(Qt.platform.os == "android") {
+                    return Qt.resolvedUrl("file:///android_asset/html/index.html");
+                }  else  {
+                    return "../../../resource/html/index.html";
+                }
+            }
         }
     }
-
-    WebPage {
-        id: webPage
-        anchors.top: loadProgressArea.bottom
-        url: "http://www.baidu.com"
-        anchors.fill: parent
-    }
-
 }
 

@@ -28,8 +28,8 @@ Page {
 
             FontMetrics {
                 id: fontMetrics
-                font.family: ApplicationSettings.fontFamily
-                font.pointSize: ApplicationSettings.defaultNormalFontPointSize
+                font.family: GeneralSettings.generalfontFamily
+                font.pointSize: GeneralSettings.generalFontPointSize
             }
 
             ColumnLayout {

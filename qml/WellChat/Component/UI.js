@@ -2,8 +2,7 @@
 // 本文件是win7
 .pragma library
 
-//
-console.log("UI font point size", "win7")
+// console.log("UI font point size", "win7")
 
 var smallFontPointSize = 8          // 主页面下的icon的文本例如chat等
 var middleFontPointSize = 11
