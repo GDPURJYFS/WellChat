@@ -28,6 +28,7 @@ Rectangle {
     property alias topBarArea: topBarParent
     property alias bottomBarArea: bottomBarParent
     property alias backgroundArea: backgroundParent
+    readonly property int applicationState: Qt.application.state
 
     Loader {
         anchors.fill: parent
@@ -217,7 +218,10 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: entered();
+    Component.onCompleted: {
+        entered();
+        Qt.application.stateChanged.connect();
+    }
 
     Component.onDestruction: exited();
 }

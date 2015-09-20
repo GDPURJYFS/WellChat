@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>qml/WellChat/BussinessPage/Chat/ChatListView.qml</file>
         <file>qml/WellChat/BussinessPage/Chat/ChatPage.qml</file>
+        <file>qml/WellChat/BussinessPage/Contacts/ContactsListView.qml</file>
         <file>qml/WellChat/BussinessPage/Discover/MomentsPage/MomentsPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/Settings/AboutPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/Settings/ChatSettingsPage.qml</file>
@@ -159,7 +160,6 @@
         <file>qml/WellChat/resource/tests/tests001.jpg</file>
         <file>qml/WellChat/Sparrow/+android/UI.js</file>
         <file>qml/WellChat/Sparrow/+android/WebPage.qml</file>
-        <file>qml/WellChat/Sparrow/ApplicationSettings.qml</file>
         <file>qml/WellChat/Sparrow/BottomBar.qml</file>
         <file>qml/WellChat/Sparrow/GeneralSettings.qml</file>
         <file>qml/WellChat/Sparrow/Page.qml</file>

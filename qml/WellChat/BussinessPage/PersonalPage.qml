@@ -16,12 +16,12 @@ Page {
         id: page
         anchors.fill: parent
 
+        verticalScrollBarPolicy :Qt.ScrollBarAlwaysOff
         horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
 
         Item {
             id: content
             width: page.width
-            // width: Math.max(page.viewport.width, column.implicitWidth + 2 * column.spacing)
             height: Math.max(page.viewport.height, column.implicitHeight + 2 * column.spacing)
 
             FontMetrics {
@@ -47,13 +47,13 @@ Page {
                         id: rowLayout1
                         width: parent.width
                         anchors.verticalCenter: parent.verticalCenter
-                        spacing: 10
+                        spacing: Screen.pixelDensity * 1.5 // 1.5mn
 
                         Item {  width: parent.spacing;  height: parent.height }
 
                         Image {
-                            height: column1.height * 1.2
-                            width: column1.height * 1.2
+                            height: column1.height * 1.8
+                            width: column1.height * 1.8
                             sourceSize: Qt.size(width, height)
                             source: constant.testPic
                         }

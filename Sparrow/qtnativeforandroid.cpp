@@ -3,10 +3,11 @@
 #include <QMutex>
 #include <QRect>
 #include <QRectF>
+#include <QGuiApplication>
 
 #ifdef Q_OS_ANDROID
 void QtNativeForAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
-                                         jint x, jint y, jint width, jint height)
+                                                   jint x, jint y, jint width, jint height)
 {
     Q_UNUSED(env)
     Q_UNUSED(thiz)
@@ -14,13 +15,15 @@ void QtNativeForAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
     static QMutex mutex;
     mutex.lock();
 
-    QRect rect(x, y, width, height);
+    if(QGuiApplication::applicationState() != Qt::ApplicationHidden) {
+        QRect rect(x, y, width, height);
 #ifdef QT_DEBUG
-    qDebug() << "notifiedKeyboardRectangle: " << rect ;
+        qDebug() << "notifiedKeyboardRectangle: " << rect ;
 #endif
-    Keyboard * keyboardSingleton = Keyboard::singleton();
-    keyboardSingleton->m_keyboardRectangle = QRectF(rect);
-    keyboardSingleton->keyboardRectangleChanged(keyboardSingleton->m_keyboardRectangle);
+        Keyboard * keyboardSingleton = Keyboard::singleton();
+        keyboardSingleton->m_keyboardRectangle = QRectF(rect);
+        keyboardSingleton->keyboardRectangleChanged(keyboardSingleton->m_keyboardRectangle);
+    }
 
     mutex.unlock();
 }

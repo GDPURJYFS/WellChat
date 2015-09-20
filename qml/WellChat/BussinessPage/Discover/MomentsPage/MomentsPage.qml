@@ -14,7 +14,16 @@ Page {
     focus: true
     Keys.onBackPressed: {
         event.accepted = true;
-        try { stackView.pop(); }  catch(e) { }
+        if(webPage.canGoBack) {
+            webPage.goBack();
+        } else {
+            try { stackView.pop(); }
+            catch(e) { console.log(e); }
+        }
+    }
+
+    Constant {
+        id: constant
     }
 
     topBar: TopBar {

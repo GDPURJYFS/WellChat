@@ -15,7 +15,7 @@ Page {
     focus: true
     Keys.onBackPressed: {
         event.accepted = true;
-        try { stackView.pop(); }  catch(e) { }
+        try { Qt.inputMethod.hide(); stackView.pop();  }  catch(e) { }
     }
 
     Constant { id: constant }
@@ -114,6 +114,7 @@ Page {
                         chatModel.append({"chatContext":textInput.text});
                         tryToNotify(textInput.text);
                         textInput.text = "";
+
                     }
                 }
             }
@@ -214,10 +215,10 @@ Page {
             PropertyChanges {
                 target: chatPage.topBarArea
                 anchors.topMargin: try {
-                        return Keyboard.keyboardRectangle.height;
-                    } catch(e) {
-                        return 0;
-                    }
+                                       return Keyboard.keyboardRectangle.height;
+                                   } catch(e) {
+                                       return 0;
+                                   }
             }
         }
     ]
@@ -251,24 +252,29 @@ Page {
 
     signal keyboardOpen()
     onKeyboardOpen: {
-        if(Keyboard.visible) {
-            console.log("Keyboard open");
-            fixTopBar();
-        } else {
-            console.log("Keyboard close");
-            resetTopBar();
-        }
-    }
-    Component.onCompleted: {
-         Qt.inputMethod.visibleChanged.connect(keyboardOpen);
         try {
-            Keyboard.keyboardRectangleChanged.connect(function() {
-                console.log("here is qml ");
-                console.log(Keyboard.keyboardRectangle);
-            });
+            if(Keyboard.visible) {
+                console.log("Keyboard open");
+                fixTopBar();
+            } else {
+                console.log("Keyboard close");
+                resetTopBar();
+            }
         } catch(e) {
             console.log(e)
         }
+    }
+
+    onApplicationStateChanged: {
+        if(applicationState == Qt.ApplicationInactive
+                || applicationState ==  Qt.ApplicationSuspended
+                || applicationState ==  Qt.ApplicationHidden) {
+            Qt.inputMethod.hide();
+        }
+    }
+
+    Component.onCompleted: {
+        Qt.inputMethod.visibleChanged.connect(keyboardOpen);
     }
 }
 

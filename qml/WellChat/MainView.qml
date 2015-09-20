@@ -8,7 +8,7 @@ import "./Component"
 import Sparrow 1.0
 
 Page {
-    id: mainPage
+    id: mainView
     title: "WellChat"
 
     Constant { id: constant }
@@ -97,7 +97,7 @@ Page {
 
     MainListView {
         id: mainListView
-        focus: mainPage.focus
+        focus: mainView.focus
         anchors.fill: parent
         model: itemsModel
     }
@@ -107,31 +107,33 @@ Page {
 
         ChatsView {
             id: chatsView
-            pageStackWindow: mainPage.pageStackWindow
-            stackView: mainPage.stackView
+            pageStackWindow: mainView.pageStackWindow
+            stackView: mainView.stackView
             width: mainListView.width
             height: mainListView.height
         }
 
         ContactsView {
-            pageStackWindow: mainPage.pageStackWindow
-            stackView: mainPage.stackView
+            id: contactsView
+            mainListView: mainListView
+            pageStackWindow: mainView.pageStackWindow
+            stackView: mainView.stackView
             width: mainListView.width
             height: mainListView.height
         }
 
         DiscoverPage {
             id: discoverPage
-            pageStackWindow: mainPage.pageStackWindow
-            stackView: mainPage.stackView
+            pageStackWindow: mainView.pageStackWindow
+            stackView: mainView.stackView
             width: mainListView.width
             height: mainListView.height
         }
 
         PersonalPage {
             id: personalPage
-            pageStackWindow: mainPage.pageStackWindow
-            stackView: mainPage.stackView
+            pageStackWindow: mainView.pageStackWindow
+            stackView: mainView.stackView
             width: mainListView.width
             height: mainListView.height
         }

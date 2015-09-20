@@ -64,6 +64,7 @@ Page {
         id: page
         anchors.fill: parent
 
+        verticalScrollBarPolicy :Qt.ScrollBarAlwaysOff
         horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
 
         Item {
