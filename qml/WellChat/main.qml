@@ -7,8 +7,6 @@ import Sparrow 1.0
 PageStackWindow {
     id: mainWindow
     title: qsTr("WellChat")
-    width: 360
-    height: 640
     initialPage: MainView {
         id: mainView
         focus: mainWindow.focus

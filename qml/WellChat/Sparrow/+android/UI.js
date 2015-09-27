@@ -6,10 +6,10 @@ var defaultFontFamily = "Microsoft YaHei UI"; // 微软雅黑
 //var defaultNormalFontPointSize = 16;
 
 var SmallFontPointSize = 13;
-var StandardFontPointSize = 16;
-var BigFontPointSize = 17;
-var LargeFontPointSize = 19;
-var HugeFontPointSize = 21;
+var StandardFontPointSize = 17;
+var BigFontPointSize = 18;
+var LargeFontPointSize = 20;
+var HugeFontPointSize = 22;
 
 var gridViewBufferBlock = 30;
 

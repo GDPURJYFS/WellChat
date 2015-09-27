@@ -220,7 +220,6 @@ Rectangle {
 
     Component.onCompleted: {
         entered();
-        Qt.application.stateChanged.connect();
     }
 
     Component.onDestruction: exited();

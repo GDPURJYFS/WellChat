@@ -1,6 +1,5 @@
 #include "qtnativeforandroid.h"
 #include "keyboard.h"
-#include <QMutex>
 #include <QRect>
 #include <QRectF>
 #include <QGuiApplication>
@@ -12,20 +11,18 @@ void QtNativeForAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
     Q_UNUSED(env)
     Q_UNUSED(thiz)
 
-    static QMutex mutex;
-    mutex.lock();
-
     if(QGuiApplication::applicationState() != Qt::ApplicationHidden) {
-        QRect rect(x, y, width, height);
-#ifdef QT_DEBUG
-        qDebug() << "notifiedKeyboardRectangle: " << rect ;
-#endif
-        Keyboard * keyboardSingleton = Keyboard::singleton();
-        keyboardSingleton->m_keyboardRectangle = QRectF(rect);
-        keyboardSingleton->keyboardRectangleChanged(keyboardSingleton->m_keyboardRectangle);
-    }
 
-    mutex.unlock();
+#ifdef QT_DEBUG
+        qDebug() << "notifiedKeyboardRectangle: "
+                 <<
+#endif
+            QMetaObject::invokeMethod(Keyboard::singleton(),
+                                      "setKeyboardRectangle",
+                                       Qt::AutoConnection,
+                                      Q_ARG(QRectF, QRect(x, y, width, height))) ;
+
+    }
 }
 
 bool QtNativeForAndroid::registerNativeMethodForJava()

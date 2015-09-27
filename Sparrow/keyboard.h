@@ -27,6 +27,9 @@ signals:
     void visibleChanged();
     void keyboardRectangleChanged(const QRectF& keyboardRectangle);
 
+protected slots:
+    void setKeyboardRectangle(const QRectF& keyboardRectangle);
+
 private slots:
     void onVisibleChangedChanged();
 
