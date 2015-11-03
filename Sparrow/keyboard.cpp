@@ -16,7 +16,7 @@ Keyboard::Keyboard(QObject *parent) :
 
 #ifdef Q_OS_ANDROID
     // org/gdpurjyfs/wellchat/NotificationClient
-    QAndroidJniObject::callStaticMethod<void>("org/GDPURJYFS/WellChat/NotificationClient",
+    QAndroidJniObject::callStaticMethod<void>("org/gdpurjyfs/wellchat/NotificationClient",
                                               "listenKeyboardHeight");
     Q_SAFE_CALL_JAVA
 #endif

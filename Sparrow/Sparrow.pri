@@ -18,5 +18,5 @@ SOURCES += \
     $$PWD/keyboard.cpp \
     $$PWD/qtnativeforandroid.cpp
 # OTHER_FILES += $$PWD/../android/src/org/gdpurjyfs/sparrow/QtNativeForAndroid.java
-OTHER_FILES += $$PWD/../android/src/org/GDPURJYFS/Sparrow/QtNativeForAndroid.java
+OTHER_FILES += $$PWD/../android/src/org/gdpurjyfs/sparrow/QtNativeForAndroid.java
 

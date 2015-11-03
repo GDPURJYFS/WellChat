@@ -61,7 +61,7 @@ void NotificationClient::updateAndroidNotification()
 #ifdef Q_OS_ANDROID
     QAndroidJniObject javaNotification = QAndroidJniObject::fromString(m_notification);
     // org/gdpurjyfs/wellchat/NotificationClient
-    QAndroidJniObject::callStaticMethod<void>("org/GDPURJYFS/WellChat/NotificationClient",
+    QAndroidJniObject::callStaticMethod<void>("org/gdpurjyfs/wellchat/NotificationClient",
                                               "notify",
                                               "(Ljava/lang/String;)V",
                                               javaNotification.object<jstring>()
