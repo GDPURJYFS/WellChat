@@ -172,5 +172,6 @@
         <file>qml/WellChat/Sparrow/WebPage.qml</file>
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
+        <file>qml/WellChat/BussinessPage/Chat/Heartbeat.qml</file>
     </qresource>
 </RCC>

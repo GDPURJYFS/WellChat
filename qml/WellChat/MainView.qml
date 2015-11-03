@@ -9,7 +9,7 @@ import Sparrow 1.0
 
 Page {
     id: mainView
-    title: "WellChat 更新啦"
+    title: "WellChat"
 
     Constant { id: constant }
 
