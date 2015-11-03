@@ -35,6 +35,7 @@ bool QtNativeForAndroid::registerNativeMethodForJava()
         }
     };
 
+    // "org/gdpurjyfs/sparrow/qtnativeforandroid" // 包名
     const char * classname = "org/GDPURJYFS/Sparrow/QtNativeForAndroid";
     jclass clazz;
     QAndroidJniEnvironment env;
