@@ -45,6 +45,23 @@ import android.view.ViewTreeObserver;
 import android.graphics.Rect;
 import android.view.ViewGroup;
 
+import java.lang.Thread;
+
+//! http://blog.csdn.net/foruok/article/details/46323129
+class SetStatusBarColorRunnable implements Runnable
+{
+    private Activity m_activity;
+    private int m_color;
+    public SetStatusBarColorRunnable(Activity activity, int color) {
+        m_activity = activity;
+        m_color = color;
+    }
+    // this method is called on Android Ui Thread
+    @Override
+    public void run() {
+        m_activity.getWindow().setStatusBarColor(m_color);
+    }
+}
 
 public class QtBridgingAndroid
 {   
@@ -66,14 +83,13 @@ public class QtBridgingAndroid
                 System.out.println("colorString: " + colorString);
                 int color = Color.parseColor(colorString);
                 System.out.println("color: " + color);
-                instanceActivity.getWindow().setStatusBarColor(color);
-                System.out.println("java: setStatusBarColor: "+colorString);
+                instanceActivity.runOnUiThread(new SetStatusBarColorRunnable(instanceActivity,
+                                                                             color));
             } catch(IllegalArgumentException e) {
                 e.printStackTrace();
             } catch(Exception e1) {
                 e1.printStackTrace();
             }
-
         }
     }
 
