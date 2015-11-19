@@ -40,8 +40,13 @@ void QtBridgingAndroid::setStatusBarColor(const QColor &color)
 {
 
 #ifdef Q_OS_ANDROID
-    QString colorString = color.name(QColor::HexArgb);
+    QString colorString = color.name(QColor::HexRgb);
     QAndroidJniObject javaColorString = QAndroidJniObject::fromString(colorString);
+
+#ifdef QT_DEBUG
+    qDebug() << "colorString" << colorString;
+#endif
+
     // org/gdpurjyfs/wellchat/QtBridgingAndroid
     // org/gdpurjyfs/sparrow/QtBridgingAndroid
     QAndroidJniObject::callStaticMethod<void>("org/gdpurjyfs/sparrow/QtBridgingAndroid",
@@ -65,7 +70,7 @@ void QtBridgingAndroid::setStatusBarColor(const QColor &color)
 
 // 在 Java 中被调用
 void QtBridgingAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
-                                                   jint x, jint y, jint width, jint height)
+                                                  jint x, jint y, jint width, jint height)
 {
     Q_UNUSED(env)
     Q_UNUSED(thiz)
@@ -75,11 +80,11 @@ void QtBridgingAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
 #ifdef QT_DEBUG
         qDebug() << "notifiedKeyboardRectangle: "
                  <<
-#endif
-            QMetaObject::invokeMethod(Keyboard::singleton(),
-                                      "setKeyboardRectangle",
-                                       Qt::AutoConnection,
-                                      Q_ARG(QRectF, QRect(x, y, width, height))) ;
+            #endif
+                    QMetaObject::invokeMethod(Keyboard::singleton(),
+                                              "setKeyboardRectangle",
+                                              Qt::AutoConnection,
+                                              Q_ARG(QRectF, QRect(x, y, width, height))) ;
 
     }
 }

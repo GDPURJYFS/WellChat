@@ -58,10 +58,22 @@ public class QtBridgingAndroid
     // allow Qt call this static function
     // api 19
     // @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    // android.view.ViewRootImpl$CalledFromWrongThreadException
+    //! http://daydayup1989.iteye.com/blog/784831
     public static void setStatusBarColor(String colorString) {
         if(instanceActivity != null) {
-            int color = Color.parseColor(colorString); 
-            instanceActivity.getWindow().setStatusBarColor(color);
+            try {
+                System.out.println("colorString: " + colorString);
+                int color = Color.parseColor(colorString);
+                System.out.println("color: " + color);
+                instanceActivity.getWindow().setStatusBarColor(color);
+                System.out.println("java: setStatusBarColor: "+colorString);
+            } catch(IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch(Exception e1) {
+                e1.printStackTrace();
+            }
+
         }
     }
 

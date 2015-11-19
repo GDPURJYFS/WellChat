@@ -3,9 +3,13 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
+
+import Sparrow 1.0
+
+import QtQml.Models 2.2
+
 import "./BussinessPage"
 import "./Component"
-import Sparrow 1.0
 
 Page {
     id: mainView
@@ -24,7 +28,7 @@ Page {
                 color: "white"
             }
 
-            Item { Layout.fillWidth: true }
+            Item { Layout.fillWidth: true          }
 
         }
         // such as menuBar
@@ -53,6 +57,13 @@ Page {
                 activeIconSource: constant.plusActiveIcon
                 inactiveIconSource: constant.plusInactiveIcon
                 onClicked: {
+                    try {
+                        console.log("try to setStatusBarColor",
+                                    topBar.backgroundColor)
+                        BridgingAndroid.setStatusBarColor(topBar.backgroundColor);
+                    } catch(e){
+                        console.log(e);
+                    }
                 }
             }
         }
@@ -102,7 +113,7 @@ Page {
         model: itemsModel
     }
 
-    VisualItemModel {
+    ObjectModel {
         id: itemsModel
 
         ChatsView {
