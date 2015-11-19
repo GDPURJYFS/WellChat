@@ -35,8 +35,11 @@ bool QtNativeForAndroid::registerNativeMethodForJava()
         }
     };
 
+    // org/gdpurjyfs/wellchat/QtBridgingAndroid
+
     // "org/gdpurjyfs/sparrow/qtnativeforandroid" // 包名
-    const char * classname = "org/gdpurjyfs/sparrow/QtNativeForAndroid";
+    // const char * classname = "org/gdpurjyfs/sparrow/QtNativeForAndroid";
+    const char * classname = "org/gdpurjyfs/wellchat/QtBridgingAndroid";
     jclass clazz;
     QAndroidJniEnvironment env;
 

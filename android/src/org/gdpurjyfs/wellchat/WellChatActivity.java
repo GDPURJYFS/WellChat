@@ -31,48 +31,32 @@
 **
 ****************************************************************************/
 
-#include "notificationclient.h"
-#include "sparrow_global.h"
+package org.gdpurjyfs.wellchat;
 
-NotificationClient::NotificationClient(QObject *parent)
-    : QObject(parent)
-{
-    connect(this, SIGNAL(notificationChanged()), this, SLOT(updateAndroidNotification()));
-}
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.app.Activity;
+import android.view.Window;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.view.ViewTreeObserver;
+import android.graphics.Rect;
+import android.view.ViewGroup;
+import android.os.Bundle;
 
-void NotificationClient::sendNotification(const QString &notification)
+public class WellChatActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
-    this->setNotification(notification);
-}
-
-void NotificationClient::setNotification(const QString &notification)
-{
-    if(m_notification != notification) {
-        m_notification = notification;
-        emit notificationChanged();
+    @Override
+    public void onCreate (Bundle savedInstanceState){
+        System.out.println("这里竟然不能有其他复杂的函数操作，会闪退的。");
+        super.onCreate(savedInstanceState);
+        QtBridgingAndroid.Init(this);
     }
-}
 
-void NotificationClient::updateAndroidNotification()
-{
-#ifdef QT_DEBUG
-    qDebug() << "sending... ";
-#endif
-#ifdef Q_OS_ANDROID
-    QAndroidJniObject javaNotification = QAndroidJniObject::fromString(m_notification);
-    // org/gdpurjyfs/wellchat/NotificationClient
-    // org/gdpurjyfs/wellchat/QtBridgingAndroid
-    QAndroidJniObject::callStaticMethod<void>("org/gdpurjyfs/wellchat/QtBridgingAndroid",
-                                              "notify",
-                                              "(Ljava/lang/String;)V",
-                                              javaNotification.object<jstring>()
-                                              );
-    Q_SAFE_CALL_JAVA
+    public WellChatActivity()
+    {
+    }
 
-#endif
-
-#ifndef Q_OS_ANDROID
-    qDebug() << "not allow to use the QtAndroidExtras";
-#endif
-    this->m_notification = "";
 }

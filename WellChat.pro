@@ -25,5 +25,6 @@ DISTFILES += \
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
-OTHER_FILES += android/src/org/gdpurjyfs/wellchat/NotificationClient.java
+OTHER_FILES += android/src/org/gdpurjyfs/wellchat/QtBridgingAndroid.java \
+               android/src/org/gdpurjyfs/wellchat/WellChatActivity.java
 
