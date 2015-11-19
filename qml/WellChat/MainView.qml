@@ -142,7 +142,7 @@ Page {
     function tryToNotify(notifiString) {
         try {
             console.log("here is qml, will send", notifiString);
-            notificationClient.sendNotification(notifiString);
+            BridgingAndroid.sendNotification(notifiString);
         }catch(e) {
             console.log(e)
         }

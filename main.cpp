@@ -10,8 +10,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "Sparrow/qtnativeforandroid.h"
-#include "Sparrow/notificationclient.h"
+#include "Sparrow/qtbridgingandroid.h"
 #include "Sparrow/keyboard.h"
 
 int main(int argc, char *argv[])
@@ -19,7 +18,7 @@ int main(int argc, char *argv[])
     //! [java register native function]
 #ifdef Q_OS_ANDROID
     qDebug() << "QtNative::registerNativeMethod : "
-             << QtNativeForAndroid::registerNativeMethodForJava();
+             << QtBridgingAndroid::registerNativeMethodForJava();
 #endif
     //! [java register native function]
 
@@ -35,27 +34,37 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+#ifdef Q_OS_ANDROID
+    //! [1] 向java安装事件监听，需要在 QApplication 示例化之后
+    QtBridgingAndroid::installListener();
+    // QQmlEngine: Illegal attempt to connect to Keyboard(0xe20036a0)
+    // that is in a different thread than the QML engine
+    // QQmlApplicationEngine(0xe0fa1924.
     //! [1]
-    //! register qml type
-    //! [1]
+#endif
 
     //! [2]
+    //! register qml type
+    //! [2]
+
+    //! [3]
     //! import path or imoprt plugin
     engine.addImportPath("qrc:/qml/WellChat");
-    //! [2]
-
     //! [3]
+
+    //! [4]
     //! load qml file
     engine.load(QUrl(QStringLiteral("qrc:/qml/WellChat/main.qml")));
-    //! [3]
-
     //! [4]
-    NotificationClient *notificationClient = new NotificationClient(&engine);
+
+    //! [5]
+    QtBridgingAndroid *BridgingAndroid = new QtBridgingAndroid(&engine);
+
     QQmlContext *context = engine.rootContext();
-    context->setContextProperty("notificationClient", notificationClient);
+    context->setContextProperty("BridgingAndroid", BridgingAndroid);
     //! 调用 Java::QtBridgingAndroid::listenKeyboardHeight 注入监听键盘事件
     context->setContextProperty("Keyboard", Keyboard::singleton());
-    //! [4]
+    //! [5]
 
     return app.exec();
 }

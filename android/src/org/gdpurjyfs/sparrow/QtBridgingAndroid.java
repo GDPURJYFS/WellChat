@@ -28,7 +28,7 @@
  * 4. 在 Qt::main 加载 QML。
 */
 
-package org.gdpurjyfs.wellchat;
+package org.gdpurjyfs.sparrow;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -71,7 +71,7 @@ public class QtBridgingAndroid
         if (notificationManager == null) {
             notificationManager = (NotificationManager)instanceActivity.getSystemService(Context.NOTIFICATION_SERVICE);
             builder = new Notification.Builder(instanceActivity);
-            builder.setSmallIcon(R.drawable.icon);
+            builder.setSmallIcon(org.gdpurjyfs.wellchat.R.drawable.icon);
             builder.setContentTitle("WellChat");
         }
 
@@ -132,5 +132,7 @@ public class QtBridgingAndroid
     // Java call this method and init this static Bridge Class
     public static void Init(Activity instanceActivity) {
         QtBridgingAndroid.instanceActivity = instanceActivity;
+
+        System.out.println("QtBridgingAndroid::Init");
     }
 }

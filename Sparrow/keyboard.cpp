@@ -14,13 +14,6 @@ Keyboard::Keyboard(QObject *parent) :
     connect(this, SIGNAL(visibleChanged()), this, SLOT(onVisibleChangedChanged()));
 #endif
 
-#ifdef Q_OS_ANDROID
-    // org/gdpurjyfs/wellchat/NotificationClient
-    // org/gdpurjyfs/wellchat/QtBridgingAndroid
-    QAndroidJniObject::callStaticMethod<void>("org/gdpurjyfs/wellchat/QtBridgingAndroid",
-                                              "listenKeyboardHeight");
-    Q_SAFE_CALL_JAVA
-#endif
 }
 
 bool Keyboard::visible() const

@@ -250,7 +250,7 @@ Page {
     function tryToNotify(notifiString) {
         try {
             console.log("will send", notifiString);
-            notificationClient.sendNotification(notifiString);
+            BridgingAndroid.sendNotification(notifiString);
         }catch(e) {
             console.log(e)
         }

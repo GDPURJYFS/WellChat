@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QRectF>
 
+class QtBridgingAndroid;
 class QtNativeForAndroid;
 class QInputMethod;
 
@@ -37,6 +38,7 @@ private:
     QInputMethod* m_inputMethod;
     QRectF m_keyboardRectangle;
     friend class QtNativeForAndroid;
+    friend class QtBridgingAndroid;
 };
 
 #endif // VIRTUALKEYBOARD_H

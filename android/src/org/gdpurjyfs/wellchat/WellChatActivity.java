@@ -33,6 +33,8 @@
 
 package org.gdpurjyfs.wellchat;
 
+
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -46,13 +48,15 @@ import android.graphics.Rect;
 import android.view.ViewGroup;
 import android.os.Bundle;
 
+//import org.gdpurjyfs.sparrow;
+
 public class WellChatActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
     @Override
     public void onCreate (Bundle savedInstanceState){
         System.out.println("这里竟然不能有其他复杂的函数操作，会闪退的。");
         super.onCreate(savedInstanceState);
-        QtBridgingAndroid.Init(this);
+        org.gdpurjyfs.sparrow.QtBridgingAndroid.Init(this);
     }
 
     public WellChatActivity()
