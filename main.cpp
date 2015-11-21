@@ -8,10 +8,12 @@
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
+#include <qqml.h>
 #include <QQmlContext>
-
 #include "Sparrow/qtbridgingandroid.h"
 #include "Sparrow/keyboard.h"
+
+#include "src/wellchat/collectionsmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -43,8 +45,10 @@ int main(int argc, char *argv[])
     //! [1]
 #endif
 
-    //! [2]
-    //! register qml type
+    //! [2]  register qml type
+
+    qmlRegisterType<CollectionsModel>("WellChat", 1, 0, "CollectionsModel");
+
     //! [2]
 
     //! [3]

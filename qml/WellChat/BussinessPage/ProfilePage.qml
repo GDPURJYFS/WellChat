@@ -133,7 +133,7 @@ Page {
                             }
                             SampleLabel {
                                 id: showId
-                                text: "ID: qyvlik"
+                                text: qsTr("ID: qyvlik")
                                 color: "#888"
                             }
                             SampleLabel {

@@ -13,11 +13,12 @@ QtBridgingAndroid::QtBridgingAndroid(QObject *parent)
 void QtBridgingAndroid::sendNotification(const QString &notifyString)
 {
 
+#ifdef Q_OS_ANDROID
+
 #ifdef QT_DEBUG
     qDebug() << "sending... ";
 #endif
 
-#ifdef Q_OS_ANDROID
     QAndroidJniObject javaNotification = QAndroidJniObject::fromString(notifyString);
     // org/gdpurjyfs/wellchat/NotificationClient
     // org/gdpurjyfs/wellchat/QtBridgingAndroid
@@ -32,6 +33,7 @@ void QtBridgingAndroid::sendNotification(const QString &notifyString)
 #endif
 
 #ifndef Q_OS_ANDROID
+    Q_UNUSED(notifyString)
     qDebug() << "not allow to use the QtAndroidExtras";
 #endif
 }
@@ -78,13 +80,12 @@ void QtBridgingAndroid::notifiedKeyboardRectangle(JNIEnv *env, jobject thiz,
     if(QGuiApplication::applicationState() != Qt::ApplicationHidden) {
 
 #ifdef QT_DEBUG
-        qDebug() << "notifiedKeyboardRectangle: "
-                 <<
-            #endif
-                    QMetaObject::invokeMethod(Keyboard::singleton(),
-                                              "setKeyboardRectangle",
-                                              Qt::AutoConnection,
-                                              Q_ARG(QRectF, QRect(x, y, width, height))) ;
+        qDebug() << "invoke method notifiedKeyboardRectangle: " <<
+#endif
+        QMetaObject::invokeMethod(Keyboard::singleton(),
+                                  "setKeyboardRectangle",
+                                  Qt::AutoConnection,
+                                  Q_ARG(QRectF, QRect(x, y, width, height))) ;
 
     }
 }

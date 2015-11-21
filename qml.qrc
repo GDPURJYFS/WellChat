@@ -173,5 +173,6 @@
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
         <file>qml/WellChat/BussinessPage/Chat/Heartbeat.qml</file>
+        <file>qml/WellChat/BussinessPage/Personal/FavoritesPage.qml</file>
     </qresource>
 </RCC>
