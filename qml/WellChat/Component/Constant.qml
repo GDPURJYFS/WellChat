@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import "./UI.js" as UI
+import Sparrow 1.0
 
 QtObject {
     id: constant
@@ -10,7 +11,7 @@ QtObject {
     // 普通灰 #ccc
 
 
-    readonly property string fontFamily: "微软雅黑"
+    readonly property string fontFamily: GeneralSettings.generalfontFamily
 
     readonly property int smallFontPointSize : UI.smallFontPointSize          // 主页面下的icon的文本例如chat等
     readonly property int middleFontPointSize : UI.middleFontPointSize

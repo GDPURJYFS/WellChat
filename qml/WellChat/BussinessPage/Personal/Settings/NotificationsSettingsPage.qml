@@ -121,7 +121,7 @@ Page {
                             anchors.left: parent.left
                             anchors.margins: 10
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("If turn off, notifications for WellChat messages will not contain the sender and summary.")
@@ -159,7 +159,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("auto")
@@ -209,7 +209,7 @@ Page {
                             anchors.left: parent.left
                             anchors.margins: 10
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("if turned off, you will not see a red dot for friends' new messages.")

@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import "../../../Component"
 import Sparrow 1.0
+
 Page {
     id: generalSettingsPage
     title: qsTr("General")
@@ -56,7 +57,7 @@ Page {
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
+                font.family: GeneralSettings.generalfontFamily
                 font.pointSize: constant.middleFontPointSize
             }
         }
@@ -127,7 +128,7 @@ Page {
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: column.spacing
                                 color: "#666"
-                                font.family: "微软雅黑"
+                                font.family: GeneralSettings.generalfontFamily
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 font.pointSize: constant.smallFontPointSize + 2
                             }
@@ -147,7 +148,7 @@ Page {
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: column.spacing
                                 color: "#666"
-                                font.family: "微软雅黑"
+                                font.family: GeneralSettings.generalfontFamily
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 font.pointSize: constant.smallFontPointSize + 2
                             }
@@ -167,7 +168,7 @@ Page {
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: column.spacing
                                 color: "#666"
-                                font.family: "微软雅黑"
+                                font.family: GeneralSettings.generalfontFamily
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 font.pointSize: constant.smallFontPointSize + 2
                             }
@@ -187,7 +188,7 @@ Page {
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: column.spacing
                                 color: "#666"
-                                font.family: "微软雅黑"
+                                font.family: GeneralSettings.generalfontFamily
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 font.pointSize: constant.smallFontPointSize + 2
                             }

@@ -56,7 +56,7 @@ Page {
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
+                font.family: GeneralSettings.generalfontFamily
                 font.pointSize: constant.middleFontPointSize
             }
         }
@@ -96,7 +96,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                         }
@@ -117,7 +117,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                         }
@@ -137,7 +137,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                         }
@@ -157,7 +157,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                         }
@@ -213,7 +213,7 @@ Page {
                             anchors.left: parent.left
                             anchors.margins: 10
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("Go to the Well Chat Security Center for account security issues.")

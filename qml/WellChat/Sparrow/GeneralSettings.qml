@@ -48,7 +48,7 @@ QObject {
 
     FontLoader {
         id: fontLoader
-        source: "./resources/MicofsoftYaHei.ttf"
+        source: "./resources/NotoSansHans-DemiLight.otf"
     }
 
     /*! internal settings */
@@ -59,8 +59,8 @@ QObject {
         property alias generalfontFamily: internal.generalfontFamily
     }
 
-    Component.onCompleted: {
-        internal.generalfontFamily = fontLoader.name;
-    }
+//    Component.onCompleted: {
+//        internal.generalfontFamily = fontLoader.name;
+//    }
 }
 

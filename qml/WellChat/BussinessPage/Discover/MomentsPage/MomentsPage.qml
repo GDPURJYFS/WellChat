@@ -65,7 +65,7 @@ Page {
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "微软雅黑"
+                font.family: GeneralSettings.generalfontFamily
                 font.pointSize: constant.middleFontPointSize
             }
         }

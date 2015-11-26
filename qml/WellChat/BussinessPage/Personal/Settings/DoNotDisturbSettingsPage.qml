@@ -106,7 +106,7 @@ Page {
                             anchors.left: parent.left
                             anchors.margins: 10
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("If enabled, you won't be notified about new messages during the hours set.")
@@ -130,7 +130,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("11:00 PM")
@@ -154,7 +154,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                             text: qsTr("8:00 AM")

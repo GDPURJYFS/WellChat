@@ -133,7 +133,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: column.spacing
                             color: "#666"
-                            font.family: "微软雅黑"
+                            font.family: GeneralSettings.generalfontFamily
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             font.pointSize: constant.smallFontPointSize + 2
                         }
@@ -144,7 +144,7 @@ Page {
                     Layout.fillWidth: true
                     text: qsTr("Terms and Privacy")
                     color: "blue"
-                    font.family: "微软雅黑"
+                    font.family: GeneralSettings.generalfontFamily
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: constant.smallFontPointSize + 2
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -154,7 +154,7 @@ Page {
                     Layout.fillWidth: true
                     text: qsTr("Copyright © 2015 qyvlik\n All Rights Reserved.")
                     color: "#666"
-                    font.family: "微软雅黑"
+                    font.family: GeneralSettings.generalfontFamily
                     font.pointSize: constant.smallFontPointSize + 2
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere

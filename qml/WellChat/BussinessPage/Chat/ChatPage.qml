@@ -243,7 +243,7 @@ Page {
                         horizontalAlignment: Text.AlignRight
                         text: chatContext
                         font.pointSize: constant.normalFontPointSize
-                        font.family: "微软雅黑"
+                        font.family: GeneralSettings.generalfontFamily
                     }
                 }
             }

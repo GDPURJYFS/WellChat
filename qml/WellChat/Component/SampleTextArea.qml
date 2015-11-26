@@ -19,15 +19,16 @@ TextArea {
     // 微信绿 #71d01d
     // 普通灰 #ccc
 
-    style: TextAreaStyle {
-        renderType: Text.NativeRendering
-    }
+//    style: TextAreaStyle {
+//        renderType: Text.NativeRendering
+//    }
 
     FontMetrics {
         id: fontMetrics
         font.family: GeneralSettings.generalfontFamily
         font.pointSize: GeneralSettings.generalFontPointSize
         font.weight: Font.Thin
+        font.bold: false
     }
 
     Rectangle {
