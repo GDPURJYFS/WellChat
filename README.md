@@ -2,6 +2,8 @@
 
 WellChat is a Application that is a WeChat-like APP by qml.
 
+> best tool vesion:
+
 > Qt version >= 5.5.0
 
 > Android SDK APi >= 19
