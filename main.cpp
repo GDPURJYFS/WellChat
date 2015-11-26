@@ -34,16 +34,8 @@ int main(int argc, char *argv[])
     app.setApplicationVersion("0.0.1");
     //! [0]
 
-    QQmlApplicationEngine engine;
 
-#ifdef Q_OS_ANDROID
-    //! [1] 向java安装事件监听，需要在 QApplication 示例化之后
-    QtBridgingAndroid::installListener();
-    // QQmlEngine: Illegal attempt to connect to Keyboard(0xe20036a0)
-    // that is in a different thread than the QML engine
-    // QQmlApplicationEngine(0xe0fa1924.
-    //! [1]
-#endif
+    QQmlApplicationEngine engine;
 
     //! [2]  register qml type
 
@@ -66,7 +58,16 @@ int main(int argc, char *argv[])
 
     QQmlContext *context = engine.rootContext();
     context->setContextProperty("BridgingAndroid", BridgingAndroid);
-    //! 调用 Java::QtBridgingAndroid::listenKeyboardHeight 注入监听键盘事件
+
+#ifdef Q_OS_ANDROID
+    //! [1] 向java安装事件监听，需要在 QApplication 示例化之后
+    QtBridgingAndroid::installListener();
+    // QQmlEngine: Illegal attempt to connect to Keyboard(0xe20036a0)
+    // that is in a different thread than the QML engine
+    // QQmlApplicationEngine(0xe0fa1924.
+    //! [1]
+#endif
+
     context->setContextProperty("Keyboard", Keyboard::singleton());
     //! [5]
 
