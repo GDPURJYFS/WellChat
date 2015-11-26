@@ -2,9 +2,11 @@
 
 WellChat is a Application that is a WeChat-like APP by qml.
 
-> Qt version > 5.5.0
+> Qt version >= 5.5.0
 
-> Android SDK APi > 19
+> Android SDK APi >= 19
+
+> Android 5.0 or new
 
 使用 qml 来仿制安卓微信的 Qt 程序，可以运行在安卓上。
 
@@ -46,7 +48,7 @@ WellChat is a Application that is a WeChat-like APP by qml.
 
 ![](Screenshot/1080x1920/WellChat08.jpg)
 
-## QML开发安卓应用上的局限
+## QML开发安卓应用的局限
 
 `QtQuick.Control` 这个模块是专门为桌面平台准备的，对移动平台支持并不完善。不能很好地动态切换不同的 `ToolBar` 和 `StatusBar` 来适配不同的页面。
 
