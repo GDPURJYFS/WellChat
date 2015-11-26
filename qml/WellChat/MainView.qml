@@ -28,7 +28,7 @@ Page {
                 color: "white"
             }
 
-            Item { Layout.fillWidth: true          }
+            Item { Layout.fillWidth: true }
 
         }
         // such as menuBar

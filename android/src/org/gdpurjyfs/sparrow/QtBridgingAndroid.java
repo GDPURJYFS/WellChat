@@ -142,6 +142,7 @@ public class QtBridgingAndroid
                     }
 
                     // java 通知 Qt 键盘改变了
+                    System.out.println("try to call native method");
                     notifiedKeyboardRectangle(
                             keyboardRectangle.centerX(),
                             keyboardRectangle.centerY(),

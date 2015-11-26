@@ -23,6 +23,16 @@ Project {
 
     Files {
         directory: "."
+        filter: "*.otf"
+    }
+
+    Files {
+        directory: "."
+        filter: "*.ttf"
+    }
+
+    Files {
+        directory: "."
         filter: "*.html"
     }
 

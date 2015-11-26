@@ -25,14 +25,13 @@ PageStackWindow {
     Timer {
         id: timer
         interval: 1000
-        running: true
+        // running: true
         repeat: true
         onTriggered: {
             var time = new Date;
             console.log(time.toTimeString(),
-                        "--------------------2000:          qt don't sleep",
+                        "--------------------1000:          qt don't sleep",
                         "-----------------------");
         }
     }
-
 }

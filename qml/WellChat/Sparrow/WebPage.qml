@@ -30,6 +30,7 @@ Page {
     title: webView.title
     property alias url: webView.url
 
+    //@disable-check M324
     WebView {
         id: webView
         anchors.fill: parent

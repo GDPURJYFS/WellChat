@@ -41,8 +41,12 @@ Rectangle {
             id: backgroundParent
             anchors.fill: parent
             onChildrenChanged: {
+
+                // @disable-check M126
                 if(children[0] != null && children[1] != null ) {
                     children[0].destory();
+
+                    //@disable-check M126
                 } else if(children[0] != null) {
                     children[0].anchors.fill = backgroundParent;
                 }
@@ -68,6 +72,7 @@ Rectangle {
             anchors.topMargin: 0
             anchors.right: parent.right
             anchors.left: parent.left
+            // @disable-check M126
             height: children[0] != null ? children[0].height: 0
             clip: true
 
@@ -123,6 +128,7 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.left: parent.left
+            // @disable-check M126
             height: children[0] != null ? children[0].height: 0
 
             state: "ShowBottomBar"
@@ -183,7 +189,7 @@ Rectangle {
         try {
             if(component.status === Component.Ready) {
 
-              // 防止点击过快，开启过多画面
+                // 防止点击过快，开启过多画面
                 page.enabled = false;
 
                 properties.focus = true;

@@ -33,6 +33,7 @@ ApplicationWindow {
     }
 
     onInitialPageChanged: {
+        // @disable-check M126
         if(initialPage.stackView == null) {
             initialPage.stackView = pageStackWindow.stackView
         }

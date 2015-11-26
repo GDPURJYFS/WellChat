@@ -1,4 +1,6 @@
+// just for android
 import QtWebView 1.0
+
 import QtQuick 2.0
 import Sparrow 1.0
 

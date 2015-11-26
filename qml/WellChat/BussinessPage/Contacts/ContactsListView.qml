@@ -28,7 +28,7 @@ Rectangle {
             var count = sectionModel.count;
             var iter = 0;
             while(iter < count) {
-                if(sectionModel.get(iter)[role].charAt(0) == sectionText) {
+                if(sectionModel.get(iter)[role].charAt(0) === sectionText) {
                     return iter;
                 }
                 ++iter;

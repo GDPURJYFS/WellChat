@@ -174,5 +174,6 @@
         <file>qml/WellChat/MainView.qml</file>
         <file>qml/WellChat/BussinessPage/Chat/Heartbeat.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/FavoritesPage.qml</file>
+        <file>qml/WellChat/Sparrow/resources/MicofsoftYaHei.ttf</file>
     </qresource>
 </RCC>

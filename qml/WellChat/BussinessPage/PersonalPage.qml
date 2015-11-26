@@ -76,7 +76,7 @@ Page {
                             }
                             SampleLabel {
                                 id: showId
-                                text: "ID: qyvlik"
+                                text: qsTr("ID: qyvlik")
                                 color: "#888"
                             }
 //                            SampleLabel {
@@ -119,6 +119,9 @@ Page {
                             Layout.fillWidth: true
                             iconSource: constant.favoritesLabelIcon
                             labelText:  qsTr("Favorites")
+                            onClicked: {
+                                __PushPage(Qt.resolvedUrl("./Personal/FavoritesPage.qml"), {} );
+                            }
                         }
                     }
                 }

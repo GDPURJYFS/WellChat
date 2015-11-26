@@ -12,8 +12,8 @@ CollectionsModel::CollectionsModel(QObject *parent):
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
 
-
-
+    //! [android AppDataLocation] :
+    //! /data/data/org.gdpurjyfs.wellchat/files/WellChat.db
     if( QDir().mkpath(QStandardPaths::writableLocation(
                           QStandardPaths::AppDataLocation)))
     {

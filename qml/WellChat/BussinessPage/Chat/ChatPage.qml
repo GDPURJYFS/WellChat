@@ -14,27 +14,38 @@ Page {
     focus: true
     Keys.onBackPressed: {
         event.accepted = true;
-        try { Qt.inputMethod.hide(); stackView.pop();  }  catch(e) { }
+        stackView.pop();
+        Qt.inputMethod.hide();
+//        try {
+//            Qt.inputMethod.visibleChanged.connect(function(){
+//                Qt.inputMethod.visibleChanged.disconnect(arguments.callee);
+//                //if(Qt.inputMethod.)
+//                stackView.pop();
+//            });
+//            Qt.inputMethod.hide();
+//        }  catch(e) {
+//            console.log(e);
+//        }
     }
 
     Constant { id: constant }
 
-    Heartbeat {
-        id: heartbeat
-        source: "./heart.js"
-        // running: true
-        interval: 3000
-        onBeat: {
-            /*
-            id: chatModel
-            //                ListElement {
-            //                    chatContext: ""
-            //                }
-*/
-            var msg = {"listModel":chatModel};
-            sendMessage(msg);
-        }
-    }
+    //    Heartbeat {
+    //        id: heartbeat
+    //        source: "./heart.js"
+    //        // running: true
+    //        interval: 3000
+    //        onBeat: {
+    //            /*
+    //            id: chatModel
+    //            //                ListElement {
+    //            //                    chatContext: ""
+    //            //                }
+    //*/
+    //            var msg = {"listModel":chatModel};
+    //            sendMessage(msg);
+    //        }
+    //    }
 
     topBar: TopBar {
         id: topBar
@@ -54,7 +65,8 @@ Page {
                 activeIconSource: constant.backActiveIcon
                 inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
-                    try { stackView.pop(); }  catch(e) { }
+                    Qt.inputMethod.hide();
+                    stackView.pop();
                 }
 
                 Separator {
@@ -127,8 +139,8 @@ Page {
                 text: qsTr("Send")
                 onClicked:  {
                     if(textInput.text != "" ) {
-                        sendMessage(textInput.text);
-                        //tryToNotify(textInput.text);
+                        // sendMessage(textInput.text);
+                        // tryToNotify(textInput.text);
                         textInput.text = "";
 
                     }
@@ -138,36 +150,36 @@ Page {
         }
     }
 
-    function sendMessage(text) {
-        var doc = new XMLHttpRequest
-        doc.open("POST","http://cnzxzc.tunnel.mobi/qyvlik/saveMess")
-        doc.onreadystatechange = function() {
-            if(doc.readyState == doc.DONE) {
-                console.log(doc.responseText);
-                try {
-                    var response = JSON.parse(doc.responseText);
-                    if(response.hasOwnProperty("flag")) {
-                        if(response.flag === "OK")
-                            chatModel.append({"chatContext":text});
-                    }
-                } catch(e) {
-                    console.log(e);
-                }
+    //    function sendMessage(text) {
+    //        var doc = new XMLHttpRequest
+    //        doc.open("POST","http://cnzxzc.tunnel.mobi/qyvlik/saveMess")
+    //        doc.onreadystatechange = function() {
+    //            if(doc.readyState == doc.DONE) {
+    //                console.log(doc.responseText);
+    //                try {
+    //                    var response = JSON.parse(doc.responseText);
+    //                    if(response.hasOwnProperty("flag")) {
+    //                        if(response.flag === "OK")
+    //                            chatModel.append({"chatContext":text});
+    //                    }
+    //                } catch(e) {
+    //                    console.log(e);
+    //                }
 
 
-            }
-        }
-        var d = new Date;
-        var sendPacket = {
-            "user_id":"1",
-            "timestamp": Date.now(),
-            "content": text,
-            "room_id":"1"
-        }
+    //            }
+    //        }
+    //        var d = new Date;
+    //        var sendPacket = {
+    //            "user_id":"1",
+    //            "timestamp": Date.now(),
+    //            "content": text,
+    //            "room_id":"1"
+    //        }
 
-        doc.send(JSON.stringify(sendPacket));
-        console.log("you send:", JSON.stringify(sendPacket));
-    }
+    //        doc.send(JSON.stringify(sendPacket));
+    //        console.log("you send:", JSON.stringify(sendPacket));
+    //    }
 
     ListView {
         id: chatListView

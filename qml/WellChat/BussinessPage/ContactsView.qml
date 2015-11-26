@@ -61,7 +61,7 @@ Page {
                 spacing: 10
                 Layout.fillWidth: true;
                 iconSource: constant.testPic
-                labelText: "哔哩哔哩"
+                labelText: qsTr("哔哩哔哩")
                 onPressAndHold: {
                     menu.chatItemIndex = index;
                     menu.popup();
