@@ -52,15 +52,16 @@ import android.os.Bundle;
 
 public class WellChatActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
-    @Override
-    public void onCreate (Bundle savedInstanceState){
-        System.out.println("这里竟然不能有其他复杂的函数操作，会闪退的。");
-        super.onCreate(savedInstanceState);
-        org.gdpurjyfs.sparrow.QtBridgingAndroid.Init(this);
-    }
+//    @Override
+//    public void onCreate (Bundle savedInstanceState){
+//        System.out.println("这里竟然不能有其他复杂的函数操作，会闪退的。");
+//        super.onCreate(savedInstanceState);
+//        org.gdpurjyfs.sparrow.QtBridgingAndroid.Init(this);
+//    }
 
     public WellChatActivity()
     {
+        org.gdpurjyfs.sparrow.QtBridgingAndroid.Init(this);
     }
 
 }

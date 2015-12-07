@@ -23,4 +23,6 @@ SOURCES += \
 OTHER_FILES += $$PWD/../android/src/org/gdpurjyfs/sparrow/QtBridgingAndroid.java
 # $$PWD/../android/src/org/gdpurjyfs/sparrow/QtNativeForAndroid.java \
 
+DISTFILES +=
+
 

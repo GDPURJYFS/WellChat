@@ -22,16 +22,18 @@ PageStackWindow {
         }
     }
 
-    Timer {
-        id: timer
-        interval: 1000
-        // running: true
-        repeat: true
-        onTriggered: {
-            var time = new Date;
-            console.log(time.toTimeString(),
-                        "--------------------1000:          qt don't sleep",
-                        "-----------------------");
+    property int applicationState : Qt.application.state
+
+    onApplicationStateChanged: {
+        if(applicationState == Qt.ApplicationActive) {
+            try {
+                var topBarColor = mainView.topBar.backgroundColor;
+                console.log("get topBarColor:", topBarColor);
+                console.log("try to set status bar color:");
+                BridgingAndroid
+                .setStatusBarColor(topBarColor);
+                console.log("success!");
+            }　catch(e) {console.log(e);}
         }
     }
 }
