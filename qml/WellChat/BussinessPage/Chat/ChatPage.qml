@@ -30,23 +30,6 @@ Page {
 
     Constant { id: constant }
 
-    //    Heartbeat {
-    //        id: heartbeat
-    //        source: "./heart.js"
-    //        // running: true
-    //        interval: 3000
-    //        onBeat: {
-    //            /*
-    //            id: chatModel
-    //            //                ListElement {
-    //            //                    chatContext: ""
-    //            //                }
-    //*/
-    //            var msg = {"listModel":chatModel};
-    //            sendMessage(msg);
-    //        }
-    //    }
-
     topBar: TopBar {
         id: topBar
 
@@ -109,9 +92,10 @@ Page {
 
             Item {
                 Layout.fillWidth: true
-                implicitHeight: textInput.implicitHeight
+                implicitHeight: input.implicitHeight
                 SampleTextArea {
-                    id: textInput
+                    id: input
+                    // textFormat: TextEdit.RichText
                     width: parent.width
                     implicitHeight: {
                         if(lineCount >= 2) {
@@ -138,123 +122,191 @@ Page {
                 Layout.alignment: Qt.AlignRight
                 text: qsTr("Send")
                 onClicked:  {
-                    if(textInput.text != "" ) {
-                        // sendMessage(textInput.text);
-                        // tryToNotify(textInput.text);
-                        textInput.text = "";
-
-                    }
+                    __sendHelp();
                 }
             }
             Item { width: 5; height: 5 }
         }
     }
 
-    //    function sendMessage(text) {
-    //        var doc = new XMLHttpRequest
-    //        doc.open("POST","http://cnzxzc.tunnel.mobi/qyvlik/saveMess")
-    //        doc.onreadystatechange = function() {
-    //            if(doc.readyState == doc.DONE) {
-    //                console.log(doc.responseText);
-    //                try {
-    //                    var response = JSON.parse(doc.responseText);
-    //                    if(response.hasOwnProperty("flag")) {
-    //                        if(response.flag === "OK")
-    //                            chatModel.append({"chatContext":text});
-    //                    }
-    //                } catch(e) {
-    //                    console.log(e);
-    //                }
-
-
-    //            }
-    //        }
-    //        var d = new Date;
-    //        var sendPacket = {
-    //            "user_id":"1",
-    //            "timestamp": Date.now(),
-    //            "content": text,
-    //            "room_id":"1"
-    //        }
-
-    //        doc.send(JSON.stringify(sendPacket));
-    //        console.log("you send:", JSON.stringify(sendPacket));
-    //    }
+    property string userId: "垃圾君"
 
     ListView {
-        id: chatListView
+        id: view
         anchors.fill: parent
-        model: ListModel {
-            id: chatModel
-            //                ListElement {
-            //                    chatContext: ""
-            //                }
+        model: chatModels
+
+        delegate: Rectangle {
+            width: view.width
+            height: chatText.contentHeight * 1.5
+            color: "transparent"
+            border.color: "black"
+            border.width: 1
+
+            SampleLabel {
+                id: chatText
+                width: parent.width * 0.8 >= chatText.contentWidth
+                       ? chatText.contentWidth
+                       : parent.width * 0.8
+
+                anchors.right: ChatId != "JiJiZhaZha" ? parent.right : undefined
+                text: ChatText
+                verticalAlignment: Text.AlignVCenter
+                anchors.verticalCenter: parent.verticalCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+
+            }
         }
 
-        spacing: 20
-
-        readonly property int itemSpacing: 10
-        readonly property int headPortraitPictureWidth: 60
-
-        readonly property int
-        chatContentAreaWidth: chatListView.width - chatListView.headPortraitPictureWidth*2 - 2 *chatListView.itemSpacing
-
-        delegate: chatAreaComponent
+        ListModel {
+            id: chatModels
+            //                ListElement {
+            //                    ChatText: "这是文本"
+            //                    ChatId: "JiJiZhaZha"
+            //                }
+            //                ListElement {
+            //                    ChatText: "我是垃圾君"
+            //                    ChatId: "垃圾君"
+            //                }
+        }
     }
 
 
-    Component {
-        id: chatAreaComponent
-        Row {
-            id: chatArea
-            spacing: chatListView.itemSpacing
-            Image {
-                // 头像
-                id: headPortraitPic1
-                width: chatListView.headPortraitPictureWidth
-                height: chatListView.headPortraitPictureWidth
-                sourceSize: Qt.size(width, height)
-                source: constant.testPic
-                opacity: 0
-            }
+    function __sendHelp() {
+        if(input.text != "" ) {
+            chatModels.append({
+                                  "ChatText": input.text,
+                                  "ChatId": userId
+                              });
+            view.positionViewAtIndex(view.count-1, ListView.End );
+            __sendTextToTuling123(input.text,
+                                  userId,
+                                  function(responseText){
+                                      chatModels
+                                      .append(
+                                           {
+                                               "ChatText": responseText,
+                                               "ChatId": "JiJiZhaZha"
+                                           });
+                                      view.positionViewAtIndex(view.count-1, ListView.End );
+                                  },
+                                  errorCodeHandle
+                                  );
+            input.text = "";
+        }
+    }
 
-            Item {
-                id: chatContentArea
-                width: chatListView.chatContentAreaWidth
-                height: chatContentText.contentHeight > 60 ? chatContentText.contentHeight : 60
+    // callback(responseText)
+    // err(errorCode)
+    function __sendTextToTuling123(text, chatUserId, callback, err) {
+        // http://www.tuling123.com/openapi/api?key=b77b735b2797bc613e7623f4406fe342&info=你好
+        var host = "http://www.tuling123.com/openapi/api?";
 
-                Rectangle {
-                    border.width: 1
-                    border.color: "#ccc"
-                    anchors.right: parent.right
-                    height: parent.height
-                    color: "green"
-                    width: chatContentText.contentWidth > 200 ? chatContentText.contentWidth : 200
-                    Text {
-                        id: chatContentText
-                        width: 300
-                        anchors.right: parent.right
-                        anchors.rightMargin: chatListView.itemSpacing
-                        anchors.top: parent.top
-                        anchors.topMargin: chatListView.itemSpacing
-                        // anchors.centerIn: parent
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        verticalAlignment: Text.AlignVCenter
-                        horizontalAlignment: Text.AlignRight
-                        text: chatContext
-                        font.pointSize: constant.normalFontPointSize
-                        font.family: GeneralSettings.generalfontFamily
-                    }
+        // 这里填写你在图灵机器人网站申请的apiKey
+        // 现在图灵机器人网站是免费申请的哦。
+        var apiKey = "b77b735b2797bc613e7623f4406fe342";
+        var info = text;
+
+        var dataTemplate = {
+            "code": 10000,              // 返回的错误码
+            "text": "回复的内容",
+            "url": "",                  // 返回单条链接
+            "list": []                  // 返回多条信息
+        }
+
+        var xhr = new XMLHttpRequest;
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == xhr.DONE) {
+                console.log("xhr.responseText: ", xhr.responseText);
+                try {
+                    var dataObject = JSON.parse(xhr.responseText);
+                    if(!isErrorCode(dataObject.code)) {
+                        callback(dataObject.text);
+                    } } catch(e) {
+                    console.log(e);
                 }
-            }
 
-            Image {
-                // 头像
-                id: headPortraitPic2
-                width: chatListView.headPortraitPictureWidth
-                height: chatListView.headPortraitPictureWidth
-                sourceSize: Qt.size(width, height)
-                source: constant.testPic
+            }
+        }
+        xhr.open("GET", host+ "key=" + apiKey +"&userid=" + chatUserId +"&info="+info );
+        xhr.send()
+    }
+
+
+    function isErrorCode(code) {
+        var errorCodes = [
+                    {
+                        "code":40001,
+                        "description":"参数key长度错误（应该是32位）"
+                    },
+                    {
+                        "code":40002,
+                        "description":"请求内容info为空"
+                    },
+                    {
+                        "code":40003,
+                        "description":"key错误或帐号未激活"
+                    },
+                    {
+                        "code":40004,
+                        "description":"当天请求次数已使用完"
+                    },
+                    {
+                        "code":40005,
+                        "description":"暂不支持所请求的功能"
+                    },
+                    {
+                        "code":40006,
+                        "description":"图灵机器人服务器正在升级"
+                    },
+                    {
+                        "code":40007,
+                        "description":"数据格式异常"
+                    },
+                ];
+        for(var iter in errorCodes) {
+            if(errorCodes[iter].code === code) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function errorCodeHandle(code) {
+
+        var errorCodes = [
+                    {
+                        "code":40001,
+                        "description":"参数key长度错误（应该是32位）"
+                    },
+                    {
+                        "code":40002,
+                        "description":"请求内容info为空"
+                    },
+                    {
+                        "code":40003,
+                        "description":"key错误或帐号未激活"
+                    },
+                    {
+                        "code":40004,
+                        "description":"当天请求次数已使用完"
+                    },
+                    {
+                        "code":40005,
+                        "description":"暂不支持所请求的功能"
+                    },
+                    {
+                        "code":40006,
+                        "description":"图灵机器人服务器正在升级"
+                    },
+                    {
+                        "code":40007,
+                        "description":"数据格式异常"
+                    },
+                ];
+        for(var iter in errorCodes) {
+            if(errorCodes[iter].code === code) {
+                console.log(errorCodes[iter].description);
             }
         }
     }
