@@ -50,6 +50,10 @@ WellChat is a Application that is a WeChat-like APP by qml.
 
 ![](Screenshot/1080x1920/WellChat08.jpg)
 
+植入图灵聊天机器人的聊天界面
+
+![](Screenshot/1080x1920/WellChat09.jpg)
+
 ## QML开发安卓应用的局限
 
 `QtQuick.Control` 这个模块是专门为桌面平台准备的，对移动平台支持并不完善。不能很好地动态切换不同的 `ToolBar` 和 `StatusBar` 来适配不同的页面。

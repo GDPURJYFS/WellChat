@@ -69,7 +69,12 @@ Page {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 onClicked: {
-                    inputYourNicoName.changeYourNicoName()
+                    if(Qt.inputMethod.visible === false) {
+                        inputYourNicoName.changeYourNicoName()
+                    } else {
+                        Qt.inputMethod.visible = false;
+                        inputYourNicoName.changeYourNicoName()
+                    }
                 }
             }
 
@@ -154,7 +159,6 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 anchors.verticalCenter: parent.verticalCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-
             }
         }
 
@@ -178,6 +182,14 @@ Page {
         parent: chatPage
         popupItem.width: chatPage.width * 0.8
         popupItem.height: popupItem.width * 0.5
+        onStateChanged: {
+            if(inputYourNicoName.state == "Hide") {
+                __dontFixTopBar = false;
+            } else {
+                __dontFixTopBar = true;
+            }
+        }
+
         RowLayout {
             anchors.fill: parent
             anchors.margins: parent.width * 0.05
@@ -190,17 +202,92 @@ Page {
                 onClicked: {
                     chatPage.userId = getNicoName.text;
                     inputYourNicoName.close();
-                    __dontFixTopBar = false;
+                    Qt.inputMethod.hide();
                 }
             }
         }
         function changeYourNicoName () {
-            __dontFixTopBar = true;
             getNicoName.text = chatPage.userId;
             inputYourNicoName.open();
         }
     }
 
+    function tryToNotify(notifiString) {
+        try {
+            console.log("will send", notifiString);
+            BridgingAndroid.sendNotification(notifiString);
+        }catch(e) {
+            console.log(e)
+        }
+    }
+
+    states: [
+        State {
+            name: "FixTopBar"
+            PropertyChanges {
+                target: chatPage.topBarArea
+                anchors.topMargin: try {
+                                       return Keyboard.keyboardRectangle.height;
+                                   } catch(e) {
+                                       return 0;
+                                   }
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "FixTopBar"
+            to: ""
+            NumberAnimation {
+                property: "anchors.topMargin"
+                duration: 350
+            }
+        },
+        Transition {
+            from: ""
+            to: "FixTopBar"
+            NumberAnimation {
+                property: "anchors.topMargin"
+                duration: 350
+            }
+        }
+    ]
+
+    function fixTopBar() {
+        chatPage.state = "FixTopBar";
+    }
+
+    function resetTopBar() {
+        chatPage.state = "";
+    }
+
+    signal keyboardOpen()
+    onKeyboardOpen: {
+        try {
+            if(Keyboard.visible && !__dontFixTopBar) {
+                console.log("Keyboard open");
+                fixTopBar();
+            } else {
+                console.log("Keyboard close");
+                resetTopBar();
+            }
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
+    onApplicationStateChanged: {
+        if(applicationState == Qt.ApplicationInactive
+                || applicationState ==  Qt.ApplicationSuspended
+                || applicationState ==  Qt.ApplicationHidden) {
+            Qt.inputMethod.hide();
+        }
+    }
+
+    Component.onCompleted: {
+        Qt.inputMethod.visibleChanged.connect(keyboardOpen);
+    }
 
     function __sendHelp() {
         if(input.text != "" ) {
@@ -339,86 +426,6 @@ Page {
                 console.log(errorCodes[iter].description);
             }
         }
-    }
-
-    function tryToNotify(notifiString) {
-        try {
-            console.log("will send", notifiString);
-            BridgingAndroid.sendNotification(notifiString);
-        }catch(e) {
-            console.log(e)
-        }
-    }
-
-    states: [
-        State {
-            name: "FixTopBar"
-            PropertyChanges {
-                target: chatPage.topBarArea
-                anchors.topMargin: try {
-                                       return Keyboard.keyboardRectangle.height;
-                                   } catch(e) {
-                                       return 0;
-                                   }
-            }
-        }
-    ]
-
-    transitions: [
-        Transition {
-            from: "FixTopBar"
-            to: ""
-            NumberAnimation {
-                property: "anchors.topMargin"
-                duration: 350
-            }
-        },
-        Transition {
-            from: ""
-            to: "FixTopBar"
-            NumberAnimation {
-                property: "anchors.topMargin"
-                duration: 350
-            }
-        }
-    ]
-
-    function fixTopBar() {
-        if(!__dontFixTopBar) {
-            chatPage.state = "FixTopBar";
-        }
-    }
-
-    function resetTopBar() {
-        chatPage.state = "";
-    }
-
-
-    signal keyboardOpen()
-    onKeyboardOpen: {
-        try {
-            if(Keyboard.visible) {
-                console.log("Keyboard open");
-                fixTopBar();
-            } else {
-                console.log("Keyboard close");
-                resetTopBar();
-            }
-        } catch(e) {
-            console.log(e)
-        }
-    }
-
-    onApplicationStateChanged: {
-        if(applicationState == Qt.ApplicationInactive
-                || applicationState ==  Qt.ApplicationSuspended
-                || applicationState ==  Qt.ApplicationHidden) {
-            Qt.inputMethod.hide();
-        }
-    }
-
-    Component.onCompleted: {
-        Qt.inputMethod.visibleChanged.connect(keyboardOpen);
     }
 }
 
