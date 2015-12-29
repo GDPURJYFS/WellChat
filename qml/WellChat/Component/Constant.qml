@@ -18,10 +18,10 @@ QtObject {
     readonly property int normalFontPointSize : UI.normalFontPointSize        // 文本编辑框，按钮中的字体大小
     readonly property int bigFontPointSize : UI.bigFontPointSize              // 软件标题
 
-    readonly property url testPic: Qt.resolvedUrl( "../resource/tests/tests001.jpg")
+    readonly property url testPic: Qt.resolvedUrl( "../Resource/tests/tests001.jpg")
 
     readonly property alias icons: __icons
-    readonly property url iconsPath: "../resource/icons/"
+    readonly property url iconsPath: "../Resource/icons/"
 
     readonly property url femaleSampleIcon: icons.sampleIcon("female")                      // 女性
     readonly property url maleSampleIcon: icons.sampleIcon("male")                          // 男性

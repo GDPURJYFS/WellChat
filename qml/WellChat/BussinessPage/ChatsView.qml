@@ -1,8 +1,13 @@
+
+import BussinessPage 1.0 as BR
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
+
 import "../Component"
+
 import Sparrow 1.0
 
 Page {
@@ -166,7 +171,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     sourceSize.width: chatItem.chatItemHeight - 2
                     sourceSize.height: chatItem.chatItemHeight - 2
-                    source: "../resource/tests/tests001.jpg"
+                    source: "../Resource/tests/tests001.jpg"
                     fillMode: Image.PreserveAspectFit
                 }
                 ColumnLayout {
@@ -248,13 +253,13 @@ Page {
                   是否
                  */
             Component.onCompleted: {
-                for(var i=0; i<100; i++) {
+                for(var i=0; i<1; i++) {
 
                     chatItemsModel
                     .append(
                          {
                              "chatTime": i,
-                             "name":"Jackfruit: "+i,
+                             "name":"忍野忍",
                              "chatisBool": false,
                              "chatContext":"233" + i
                          });
@@ -276,7 +281,7 @@ Page {
     }
 
     function __LoadChatPage(userid, username){
-        __PushPage(Qt.resolvedUrl("./Chat/ChatPage.qml"), {username: username} );
+        __PushPage(BR.R.chatChatPage, {username: username} );
     }
 
 }

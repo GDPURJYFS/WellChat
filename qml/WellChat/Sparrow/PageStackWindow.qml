@@ -1,11 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls.Styles 1.3
 
 ApplicationWindow {
     id: pageStackWindow
-    title: qsTr("WellChat")
     width: 360
     height: 640
     visible: true
@@ -19,9 +18,9 @@ ApplicationWindow {
         }
     }
 
+    property alias stackView: __stackView
     property alias initialPage: __stackView.initialItem
     property alias focus: __stackView.focus
-    property alias stackView: __stackView
     readonly property alias currentItem: __stackView.currentItem
     readonly property alias depth: __stackView.depth
     readonly property alias busy: __stackView.busy
@@ -33,8 +32,7 @@ ApplicationWindow {
     }
 
     onInitialPageChanged: {
-        // @disable-check M126
-        if(initialPage.stackView == null) {
+        if(initialPage.stackView === null) {
             initialPage.stackView = pageStackWindow.stackView
         }
     }

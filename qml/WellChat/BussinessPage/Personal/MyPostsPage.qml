@@ -1,10 +1,12 @@
+import Resource 1.0 as R
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.2
+
 import "../../Component"
 import "./Settings"
+
 import Sparrow 1.0
 
 Page {
@@ -18,26 +20,20 @@ Page {
         try { stackView.pop(); }  catch(e) { }
     }
 
-
-    Constant {  id: constant  }
-
-
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSource: R.R.activeIconBack
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                     // console.log(x, y)
@@ -88,7 +84,7 @@ Page {
             height: fengmian.height + (touxiang.height)
             Image {
                 id: fengmian
-                source: constant.testPic
+                source: R.R.testPic
                 sourceSize.width: myPostPage.width
                 width: myPostPage.width
                 fillMode: Image.PreserveAspectCrop
@@ -99,7 +95,7 @@ Page {
                 anchors.rightMargin: touxiang.height * 0.2
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: touxiang.height / 2
-                source: constant.testPic
+                source: R.R.testPic
                 sourceSize.width: myPostPage.width * 0.23
             }
         }
@@ -109,7 +105,7 @@ Page {
                 text: "今天"
             }
             Image {
-                source: constant.testPic
+                source: R.R.testPic
                 sourceSize.width: myPostPage.width * 0.23
                 fillMode: Image.PreserveAspectCrop
             }

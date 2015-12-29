@@ -1,9 +1,13 @@
+import Resource 1.0 as R
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
-import "../../../Component"
+
 import Sparrow 1.0
+
+import "../../../Component"
+
 Page {
     id: myAccountSettingsPage
     title: qsTr("My Account")
@@ -19,20 +23,18 @@ Page {
 
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSource: R.R.activeIconBack
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                 }

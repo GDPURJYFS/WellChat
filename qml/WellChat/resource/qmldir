@@ -1,0 +1,3 @@
+module Resource
+
+singleton R 1.0 ./R.qml

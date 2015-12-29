@@ -1,8 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
+
 import Sparrow 1.0
+
 import "../Component"
 
 Page {
@@ -20,20 +21,19 @@ Page {
 
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
+            SampleIcon {
+                iconSource: constant.backActiveIcon
                 height: topBar.height - 2
                 width: topBar.height - 2
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                 }

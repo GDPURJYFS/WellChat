@@ -1,17 +1,19 @@
+import Resource 1.0 as R
+import BussinessPage 1.0 as BR
+
 import QtQuick 2.5
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
+
 import "../Component"
 import "./Personal"
+
 import Sparrow 1.0
 
 Page {
     id: discoverPage
     title: qsTr("Discover")
     color: "#ebebeb"
-
-    Constant {  id: constant  }
 
     ScrollView {
         id: page
@@ -43,10 +45,10 @@ Page {
 
                 IconLabel {
                     Layout.fillWidth: true
-                    iconSource: constant.momentsLabelIcon
+                    iconSource: R.R.labelIconMoments
                     labelText:  qsTr("Moments")
                     onClicked: {
-                        __PushPage(Qt.resolvedUrl("./Discover/MomentsPage/MomentsPage.qml"))
+                        __PushPage(BR.R.discoverMomentsPage)
                     }
 
                     Image {
@@ -57,7 +59,7 @@ Page {
                         width: parent.height
                         height: parent.height
                         sourceSize: Qt.size(width, height)
-                        source: constant.testPic
+                        source: R.R.testPic
                     }
 
                 } // First Group
@@ -73,7 +75,7 @@ Page {
                         spacing: 0
                         IconLabel {
                             Layout.fillWidth: true
-                            iconSource: constant.scanQRCodeLabelIcon
+                            iconSource: R.R.labelIconScanQRCode
                             labelText:  qsTr("Scan QR Code")
                         }
 
@@ -85,7 +87,7 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            iconSource: constant.shakeLabelIcon
+                            iconSource: R.R.labelIconShake
                             labelText:  qsTr("Shake")
                         }
                     }
@@ -102,7 +104,7 @@ Page {
                         spacing: 0
                         IconLabel {
                             Layout.fillWidth: true
-                            iconSource: constant.peopleNearbyLabelIcon
+                            iconSource: R.R.labelIconPeopleNearby
                             labelText:  qsTr("People Nearby")
                         }
 
@@ -114,7 +116,7 @@ Page {
 
                         IconLabel {
                             Layout.fillWidth: true
-                            iconSource: constant.driftBottleLabelIcon
+                            iconSource: R.R.labelIconDriftBottle
                             labelText:  qsTr("Drift Bottle")
                         }
                     }
@@ -122,7 +124,7 @@ Page {
 
                 IconLabel {
                     Layout.fillWidth: true
-                    iconSource: constant.gamesLabelIcon
+                    iconSource: R.R.labelIconGames
                     labelText:  qsTr("Games")
                 } // First Group
             } // Main ColumnLayout

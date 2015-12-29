@@ -1,8 +1,12 @@
+import BussinessPage 1.0 as BR
+
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
+
 import Sparrow 1.0
+
 import "../Component"
 
 Page {
@@ -79,11 +83,11 @@ Page {
                                 text: qsTr("ID: qyvlik")
                                 color: "#888"
                             }
-//                            SampleLabel {
-//                                id: showNick
-//                                text: "昵称: " + "qyvlik"
-//                                color: "#888"
-//                            }
+                            //                            SampleLabel {
+                            //                                id: showNick
+                            //                                text: "昵称: " + "qyvlik"
+                            //                                color: "#888"
+                            //                            }
                         }
 
                         Item { Layout.fillWidth: true }
@@ -105,7 +109,8 @@ Page {
                             iconSource: constant.myPostsLabelIcon
                             labelText:  qsTr("My Posts")
                             onClicked: {
-                                __PushPage(Qt.resolvedUrl("./Personal/MyPostsPage.qml"), {} );
+                                __PushPage(BR.R.personalMyPostsPage);
+                                // __PushPage(Qt.resolvedUrl("./Personal/MyPostsPage.qml"), {} );
                             }
                         }
 
@@ -120,7 +125,9 @@ Page {
                             iconSource: constant.favoritesLabelIcon
                             labelText:  qsTr("Favorites")
                             onClicked: {
-                                __PushPage(Qt.resolvedUrl("./Personal/FavoritesPage.qml"), {} );
+                                __PushPage(BR.R.personalFavoritesPage, {} );
+                                //                                 __PushPage(Qt.resolvedUrl("./Personal/FavoritesPage.qml"), {} );
+
                             }
                         }
                     }
@@ -143,7 +150,8 @@ Page {
                     iconSource: constant.settingsLabelIcon
                     labelText:  qsTr("Settings")
                     onClicked: {
-                        __PushPage(Qt.resolvedUrl("./Personal/SettingsPage.qml"), {} );
+                               __PushPage(BR.R.personalSettingsPage, {} );
+                        // __PushPage(Qt.resolvedUrl("./Personal/SettingsPage.qml"), {} );
                     }
                 }
             }

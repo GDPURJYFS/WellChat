@@ -7,8 +7,6 @@ import Sparrow 1.0
 Item  {
     id: settingsGroup
 
-    Constant {  id: constant  }
-
     property alias title: title.text
     property alias backgroundColor: background.color
     property alias spacing: columnLayout.spacing

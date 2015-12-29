@@ -1,10 +1,13 @@
+import Resource 1.0 as R
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
-import QtQuick.Layouts 1.1
-import "../../../Component"
-import Sparrow 1.0
 import QtQuick.Window 2.2
+import QtQuick.Layouts 1.1
+
+import Sparrow 1.0
+
+import "../../../Component"
 
 Page {
     id: momentsPage
@@ -28,20 +31,18 @@ Page {
 
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
+                iconSource: R.R.activeIconBack
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                 }
@@ -91,13 +92,14 @@ Page {
             width: momentsPage.width
             anchors.top: loadProgressArea.bottom
             anchors.bottom: parent.bottom
-            url: {
-                if(Qt.platform.os == "android") {
-                    return Qt.resolvedUrl("file:///android_asset/html/index.html");
-                }  else  {
-                    return "../../../resource/html/index.html";
-                }
-            }
+            url: "https://github.com/GDPURJYFS/WellChat"
+//            {
+//                if(Qt.platform.os == "android") {
+//                    return Qt.resolvedUrl("file:///android_asset/html/index.html");
+//                }  else  {
+//                    return "../../../Resource/html/index.html";
+//                }
+//            }
         }
     }
 }

@@ -1,10 +1,15 @@
+import Resource 1.0 as R
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import "../../Component"
+
 import Sparrow 1.0
+import Sparrow.PopupLayer 1.0
+
+import "../../Component"
 
 Page {
     id: chatPage
@@ -16,37 +21,21 @@ Page {
         event.accepted = true;
         stackView.pop();
         Qt.inputMethod.hide();
-//        try {
-//            Qt.inputMethod.visibleChanged.connect(function(){
-//                Qt.inputMethod.visibleChanged.disconnect(arguments.callee);
-//                //if(Qt.inputMethod.)
-//                stackView.pop();
-//            });
-//            Qt.inputMethod.hide();
-//        }  catch(e) {
-//            console.log(e);
-//        }
     }
-
-    Constant { id: constant }
 
     topBar: TopBar {
         id: topBar
-
-        //! aviod looping binding
-        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
+                iconSource: R.R.activeIconBack
+                // iconSource: constant.backActiveIcon
                 onClicked: {
                     Qt.inputMethod.hide();
                     stackView.pop();
@@ -73,6 +62,17 @@ Page {
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
             }
+
+            SampleIcon {
+                iconSource: R.R.labelIconSettings
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onClicked: {
+                    inputYourNicoName.changeYourNicoName()
+                }
+            }
+
         }
 
     }
@@ -86,8 +86,8 @@ Page {
             IconButton {
                 width: topBar.height - 2
                 height: topBar.height - 2
-                activeIconSource: constant.soundActiveIcon
-                inactiveIconSource: constant.soundInactiveIcon
+                activeIconSource: R.R.activeIconSound
+                inactiveIconSource: R.R.inactiveIconSound
             }
 
             Item {
@@ -107,8 +107,8 @@ Page {
                     IconButton {
                         width: topBar.height * 0.9
                         height: topBar.height * 0.9
-                        activeIconSource: constant.emoticonActiveIcon
-                        inactiveIconSource: constant.emoticonInactiveIcon
+                        activeIconSource: R.R.activeIconEmoticon
+                        inactiveIconSource: R.R.inactiveIconEmoticon
                         anchors.bottom: parent.bottom
                         anchors.right: parent.right
                         anchors.rightMargin: 10
@@ -168,6 +168,36 @@ Page {
             //                    ChatText: "我是垃圾君"
             //                    ChatId: "垃圾君"
             //                }
+        }
+    }
+
+    property bool __dontFixTopBar: false
+
+    PopupLayer {
+        id: inputYourNicoName
+        parent: chatPage
+        popupItem.width: chatPage.width * 0.8
+        popupItem.height: popupItem.width * 0.5
+        RowLayout {
+            anchors.fill: parent
+            anchors.margins: parent.width * 0.05
+            SampleTextField {
+                id: getNicoName
+                Layout.fillWidth: true
+            }
+            SampleButton {
+                text: qsTr("OK")
+                onClicked: {
+                    chatPage.userId = getNicoName.text;
+                    inputYourNicoName.close();
+                    __dontFixTopBar = false;
+                }
+            }
+        }
+        function changeYourNicoName () {
+            __dontFixTopBar = true;
+            getNicoName.text = chatPage.userId;
+            inputYourNicoName.open();
         }
     }
 
@@ -354,12 +384,15 @@ Page {
     ]
 
     function fixTopBar() {
-        chatPage.state = "FixTopBar";
+        if(!__dontFixTopBar) {
+            chatPage.state = "FixTopBar";
+        }
     }
 
     function resetTopBar() {
         chatPage.state = "";
     }
+
 
     signal keyboardOpen()
     onKeyboardOpen: {

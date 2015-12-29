@@ -1,11 +1,16 @@
+import Resource 1.0 as R
+import BussinessPage 1.0 as BR
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.2
+
 import "../../Component"
 import "./Settings"
+
 import Sparrow 1.0
+import Sparrow.PopupLayer 1.0
+import Sparrow.PopupLayer.Delegate 1.0
 
 Page {
     id: personalPage
@@ -17,26 +22,20 @@ Page {
         try { stackView.pop(); }  catch(e) { }
     }
 
-
-    Constant {  id: constant  }
-
-
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSource: R.R.activeIconBack
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                     // console.log(x, y)
@@ -103,7 +102,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("Notificatons")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/NotificationsSettingsPage.qml"));
+                            __PushPage(BR.R.personalSettingsNotificationsSettingsPage)
                         }
                     }
 
@@ -118,7 +117,7 @@ Page {
                         labelText:  qsTr("Do Not Disturb")
 
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/DoNotDisturbSettingsPage.qml"));
+                             __PushPage(BR.R.personalSettingsDoNotDisturbSettingsPage);
                         }
                     }
 
@@ -132,7 +131,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("Chat")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/ChatSettingsPage.qml"))
+                            __PushPage(BR.R.personalSettingsChatSettingsPage)
                         }
                     }
 
@@ -146,7 +145,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("Privacy")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/PrivacySettingsPage.qml"))
+                            __PushPage(BR.R.personalSettingsPrivacySettingsPage)
                         }
                     }
 
@@ -160,7 +159,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("General")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/GeneralSettingsPage.qml"))
+                            __PushPage(BR.R.personalSettingsGeneralSettingsPage)
                         }
                     }
 
@@ -174,7 +173,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("My Account")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/MyAccountSettingsPage.qml"))
+                            __PushPage(BR.R.personalSettingsMyAccountSettingsPage)
                         }
                     }
                 } // First Settings Group
@@ -185,7 +184,7 @@ Page {
                         Layout.fillWidth: true
                         labelText:  qsTr("About")
                         onClicked: {
-                            __PushPage(Qt.resolvedUrl("./Settings/AboutPage.qml"))
+                             __PushPage(BR.R.personalSettingsAboutPage)
                         }
                     }
 
@@ -198,17 +197,23 @@ Page {
                     IconLabel {
                         Layout.fillWidth: true
                         labelText:  qsTr("Log Out")
-                        onClicked: messageDialog.open()
-                        MessageDialog {
-                            id: messageDialog
-                            title: qsTr("Log Out")
-                            standardButtons: StandardButton.Yes | StandardButton.Cancel
-                            onYes: console.log("Yes")
-                            onRejected: console.log("Cancel")
-                        }
+                        onClicked: dialog.open()
                     }
                 }
             }// First Settings Group
         } // content
     } // ScrollView
+
+    PopupLayer {
+        id: dialog
+        popupItem.color: "white"
+        popupItem.radius: personalPage.width * 0.05
+        SampleButton {
+            anchors.centerIn: parent
+            text:qsTr("Log Out?")
+            onClicked: {
+                dialog.close()
+            }
+        }
+    }
 }

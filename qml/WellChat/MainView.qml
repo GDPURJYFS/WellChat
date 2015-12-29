@@ -1,21 +1,22 @@
+import Resource 1.0 as Resource
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
-import QtQuick.Window 2.0
+import QtQml.Models 2.2
 
 import Sparrow 1.0
 
-import QtQml.Models 2.2
-
-import "./BussinessPage"
+import "./BussinessPage"  // has R.qml
 import "./Component"
 
 Page {
     id: mainView
+
     title: "WellChat"
 
-    Constant { id: constant }
+    // Constant { }
 
     topBar: TopBar {
         id: topBar
@@ -39,23 +40,19 @@ Page {
             anchors.rightMargin: 10
             //! [0]
 
-            IconButton {
+            SampleIcon {
+                iconSource: Resource.R.activeIconMagnifier
                 id: iconButton2
-                width: topBar.height - 2
-                height: topBar.height - 2
-                activeIconSource: constant.magnifierActiveIcon
-                inactiveIconSource: constant.magnifierInactiveIcon
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 onClicked: {
                     tryToNotify("我操！");
                 }
             }
 
-            IconButton {
+            SampleIcon {
+                iconSource: Resource.R.activeIconPlus
                 id: iconButton1
-                width: topBar.height - 2
-                height: topBar.height - 2
-                activeIconSource: constant.plusActiveIcon
-                inactiveIconSource: constant.plusInactiveIcon
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 onClicked: {
                     try {
                         console.log("try to setStatusBarColor",
@@ -79,10 +76,10 @@ Page {
             anchors.fill: parent
             readonly property var iconNames: ["Chat","Contacts","Discover", "Me"]
             function getActiveIconUrl(index) {
-                return "./resource/icons/bar-icons/active/"+iconNames[index].toLowerCase()+".png";
+                return "./Resource/icons/bar-icons/active/"+iconNames[index].toLowerCase()+".png";
             }
             function getInctiveIconUrl(index) {
-                return "./resource/icons/bar-icons/inactive/"+iconNames[index].toLowerCase()+".png";
+                return "./Resource/icons/bar-icons/inactive/"+iconNames[index].toLowerCase()+".png";
             }
 
             // Item { Layout.fillWidth: true }

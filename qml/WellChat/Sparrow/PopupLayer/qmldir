@@ -1,0 +1,5 @@
+module PopupLayer
+
+PopupLayer 1.0 ./PopupLayer.qml
+PopupLayerDelegate 1.0 ./PopupLayerDelegate.qml
+PopupLayerTransition 1.0 ./PopupLayerTransition.qml

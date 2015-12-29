@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/WellChat/BussinessPage/Chat/ChatListView.qml</file>
         <file>qml/WellChat/BussinessPage/Chat/ChatPage.qml</file>
+        <file>qml/WellChat/BussinessPage/Chat/heart.js</file>
+        <file>qml/WellChat/BussinessPage/Chat/Heartbeat.qml</file>
         <file>qml/WellChat/BussinessPage/Contacts/ContactsListView.qml</file>
         <file>qml/WellChat/BussinessPage/Discover/MomentsPage/MomentsPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/Settings/AboutPage.qml</file>
@@ -12,6 +13,7 @@
         <file>qml/WellChat/BussinessPage/Personal/Settings/NotificationsSettingsPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/Settings/PrivacySettingsPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/Settings/SettingsGroup.qml</file>
+        <file>qml/WellChat/BussinessPage/Personal/FavoritesPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/MyPostsPage.qml</file>
         <file>qml/WellChat/BussinessPage/Personal/SettingsPage.qml</file>
         <file>qml/WellChat/BussinessPage/ChatsView.qml</file>
@@ -19,161 +21,136 @@
         <file>qml/WellChat/BussinessPage/DiscoverPage.qml</file>
         <file>qml/WellChat/BussinessPage/PersonalPage.qml</file>
         <file>qml/WellChat/BussinessPage/ProfilePage.qml</file>
+        <file>qml/WellChat/BussinessPage/qmldir</file>
+        <file>qml/WellChat/BussinessPage/R.qml</file>
         <file>qml/WellChat/Component/+android/UI.js</file>
         <file>qml/WellChat/Component/Constant.qml</file>
         <file>qml/WellChat/Component/Icon.qml</file>
         <file>qml/WellChat/Component/IconButton.qml</file>
         <file>qml/WellChat/Component/IconLabel.qml</file>
         <file>qml/WellChat/Component/MainListView.qml</file>
-        <file>qml/WellChat/Component/SampleButton.qml</file>
         <file>qml/WellChat/Component/SampleTextArea.qml</file>
         <file>qml/WellChat/Component/ScrollBar.qml</file>
         <file>qml/WellChat/Component/Separator.qml</file>
         <file>qml/WellChat/Component/UI.js</file>
-        <file>qml/WellChat/resource/background/active/chat-bubble.png</file>
-        <file>qml/WellChat/resource/background/inactive/chat-bubble.png</file>
-        <file>qml/WellChat/resource/html/css/mui.css</file>
-        <file>qml/WellChat/resource/html/css/mui.min.css</file>
-        <file>qml/WellChat/resource/html/css/style.css</file>
-        <file>qml/WellChat/resource/html/fonts/mui.ttf</file>
-        <file>qml/WellChat/resource/html/images/chilun.png</file>
-        <file>qml/WellChat/resource/html/images/footer1.png</file>
-        <file>qml/WellChat/resource/html/images/footer2.png</file>
-        <file>qml/WellChat/resource/html/images/footer3.png</file>
-        <file>qml/WellChat/resource/html/images/jiaoxiaoslider.jpg</file>
-        <file>qml/WellChat/resource/html/images/liudeh.jpg</file>
-        <file>qml/WellChat/resource/html/images/user1.png</file>
-        <file>qml/WellChat/resource/html/images/user2.png</file>
-        <file>qml/WellChat/resource/html/images/user3.png</file>
-        <file>qml/WellChat/resource/html/images/user4.png</file>
-        <file>qml/WellChat/resource/html/images/user5.png</file>
-        <file>qml/WellChat/resource/html/images/user6.png</file>
-        <file>qml/WellChat/resource/html/images/user7.png</file>
-        <file>qml/WellChat/resource/html/images/userheader.png</file>
-        <file>qml/WellChat/resource/html/images/复制 liudeh.jpg</file>
-        <file>qml/WellChat/resource/html/js/jquery.min.js</file>
-        <file>qml/WellChat/resource/html/js/mui.js</file>
-        <file>qml/WellChat/resource/html/js/mui.min.js</file>
-        <file>qml/WellChat/resource/html/baoming.html</file>
-        <file>qml/WellChat/resource/html/index.html</file>
-        <file>qml/WellChat/resource/html/jiaxiaokecheng.html</file>
-        <file>qml/WellChat/resource/html/jingyingban.html</file>
-        <file>qml/WellChat/resource/html/jingyingyuyue.html</file>
-        <file>qml/WellChat/resource/html/putongban.html</file>
-        <file>qml/WellChat/resource/html/putongyuyue.html</file>
-        <file>qml/WellChat/resource/html/shangwuban.html</file>
-        <file>qml/WellChat/resource/html/shangwuyuyue.html</file>
-        <file>qml/WellChat/resource/html/shuangxiuban.html</file>
-        <file>qml/WellChat/resource/html/shuangxiuyuyue.html</file>
-        <file>qml/WellChat/resource/html/youhuaban.html</file>
-        <file>qml/WellChat/resource/html/youhuayuyue.html</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/a6c.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/back.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/chat.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/contacts.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/discover.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/emoticon.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/magnifier.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/me.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/plus.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/active/sound.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/default/a6b.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/default/back.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/a6b.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/back.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/chat.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/contacts.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/discover.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/emoticon.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/magnifier.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/me.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/plus.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/inactive/sound.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/a9p.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/a9q.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/aez.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af0.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af1.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af2.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af3.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af4.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af5.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af6.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af7.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/af8.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/ag2.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/au8.png</file>
-        <file>qml/WellChat/resource/icons/bar-icons/au9.png</file>
-        <file>qml/WellChat/resource/icons/icons/alarm.png</file>
-        <file>qml/WellChat/resource/icons/icons/female.png</file>
-        <file>qml/WellChat/resource/icons/icons/male.png</file>
-        <file>qml/WellChat/resource/icons/icons/un-alarm.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a9p.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a9q.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_0.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_7.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_f.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_g.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_h.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_i.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_j.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_k.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_l.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_m.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_o.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_p.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_q.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_t.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/a_z.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aeo.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aep.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aeq.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aes.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aet.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/aeu.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/ak3.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/ak4.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/unkow/ak5.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/drift-bottle.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/face.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/favorites.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/games.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/moments.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/my-posts.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/people-nearby.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/scan-qr-code.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/settings.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/shake.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-excel.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-file.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-music.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-pdf.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-picture.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-position.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-sound.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-text.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-url.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-video.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-word.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/share-zip.png</file>
-        <file>qml/WellChat/resource/icons/label-icons/wallet.png</file>
-        <file>qml/WellChat/resource/tests/tests001.jpg</file>
+        <file>qml/WellChat/Resource/background/active/chat-bubble.png</file>
+        <file>qml/WellChat/Resource/background/inactive/chat-bubble.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/back.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/chat.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/contacts.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/discover.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/emoticon.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/magnifier.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/me.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/plus.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/active/sound.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/back.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/chat.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/contacts.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/discover.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/emoticon.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/magnifier.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/me.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/plus.png</file>
+        <file>qml/WellChat/Resource/icons/bar-icons/inactive/sound.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a9p.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a9q.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_0.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_7.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_f.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_g.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_h.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_i.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_j.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_k.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_l.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_m.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_o.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_p.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_q.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_t.png</file>
+        <file>qml/WellChat/Resource/icons/icons/a_z.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aeo.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aep.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aeq.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aes.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aet.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aeu.png</file>
+        <file>qml/WellChat/Resource/icons/icons/aez.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af0.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af1.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af2.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af3.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af4.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af5.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af6.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af7.png</file>
+        <file>qml/WellChat/Resource/icons/icons/af8.png</file>
+        <file>qml/WellChat/Resource/icons/icons/ag2.png</file>
+        <file>qml/WellChat/Resource/icons/icons/ak3.png</file>
+        <file>qml/WellChat/Resource/icons/icons/ak4.png</file>
+        <file>qml/WellChat/Resource/icons/icons/ak5.png</file>
+        <file>qml/WellChat/Resource/icons/icons/alarm.png</file>
+        <file>qml/WellChat/Resource/icons/icons/au8.png</file>
+        <file>qml/WellChat/Resource/icons/icons/au9.png</file>
+        <file>qml/WellChat/Resource/icons/icons/female.png</file>
+        <file>qml/WellChat/Resource/icons/icons/male.png</file>
+        <file>qml/WellChat/Resource/icons/icons/un-alarm.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/drift-bottle.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/face.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/favorites.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/games.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/moments.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/my-posts.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/people-nearby.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/scan-qr-code.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/settings.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/shake.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-excel.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-file.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-music.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-pdf.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-picture.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-position.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-sound.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-text.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-url.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-video.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-word.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/share-zip.png</file>
+        <file>qml/WellChat/Resource/icons/label-icons/wallet.png</file>
+        <file>qml/WellChat/Resource/tests/tests001.jpg</file>
+        <file>qml/WellChat/Resource/qmldir</file>
+        <file>qml/WellChat/Resource/R.qml</file>
         <file>qml/WellChat/Sparrow/+android/UI.js</file>
         <file>qml/WellChat/Sparrow/+android/WebPage.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/Delegate/PopupLayerDialogDelegate.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/Delegate/PopupLayerSideMenuDelegate.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/Delegate/qmldir</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/PopupLayer.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/PopupLayerDelegate.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/PopupLayerTransition.qml</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/qmldir</file>
+        <file>qml/WellChat/Sparrow/PopupLayer/readme.md</file>
+        <file>qml/WellChat/Sparrow/resources/NotoSansHans-DemiLight.otf</file>
+        <file>qml/WellChat/Sparrow/resources/readme.md</file>
         <file>qml/WellChat/Sparrow/BottomBar.qml</file>
+        <file>qml/WellChat/Sparrow/ClickedShaderEffect.qml</file>
         <file>qml/WellChat/Sparrow/GeneralSettings.qml</file>
         <file>qml/WellChat/Sparrow/Page.qml</file>
         <file>qml/WellChat/Sparrow/PageStackWindow.qml</file>
         <file>qml/WellChat/Sparrow/qmldir</file>
         <file>qml/WellChat/Sparrow/QObject.qml</file>
+        <file>qml/WellChat/Sparrow/SampleButton.qml</file>
+        <file>qml/WellChat/Sparrow/SampleIcon.qml</file>
         <file>qml/WellChat/Sparrow/SampleLabel.qml</file>
+        <file>qml/WellChat/Sparrow/SampleTextField.qml</file>
         <file>qml/WellChat/Sparrow/TopBar.qml</file>
+        <file>qml/WellChat/Sparrow/Tracker.qml</file>
         <file>qml/WellChat/Sparrow/UI.js</file>
         <file>qml/WellChat/Sparrow/WebPage.qml</file>
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
-        <file>qml/WellChat/BussinessPage/Chat/Heartbeat.qml</file>
-        <file>qml/WellChat/BussinessPage/Personal/FavoritesPage.qml</file>
-        <file>qml/WellChat/Sparrow/resources/NotoSansHans-DemiLight.otf</file>
+        <file>qml/WellChat/WellChat.qmlproject</file>
     </qresource>
 </RCC>

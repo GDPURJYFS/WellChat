@@ -1,6 +1,7 @@
 pragma Singleton
+
 import QtQuick 2.0
-import Qt.labs.settings 1.0
+// import Qt.labs.settings 1.0
 import "UI.js" as UI
 
 QObject {
@@ -52,12 +53,12 @@ QObject {
     }
 
     /*! internal settings */
-    Settings {
-        id: settings
-        category: generalSettings.objectName
-        property alias generalFontPointSize: internal.generalFontPointSize
-        property alias generalfontFamily: internal.generalfontFamily
-    }
+//    Settings {
+//        id: settings
+//        category: generalSettings.objectName
+//        property alias generalFontPointSize: internal.generalFontPointSize
+//        property alias generalfontFamily: internal.generalfontFamily
+//    }
 
 //    Component.onCompleted: {
 //        internal.generalfontFamily = fontLoader.name;

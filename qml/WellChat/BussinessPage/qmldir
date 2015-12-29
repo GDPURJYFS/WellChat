@@ -1,0 +1,6 @@
+# this module is for this application
+# don't use the other application
+
+module BussinessPage
+
+singleton R 1.0 ./R.qml

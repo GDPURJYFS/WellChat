@@ -1,15 +1,25 @@
 # version 1.0
 module Sparrow
 
+UI 1.0 ./UI.js
 singleton GeneralSettings 1.0 ./GeneralSettings.qml
 
-BottomBar 1.0 ./BottomBar.qml
-Page 1.0 ./Page.qml
+QObject 1.0 ./QObject.qml
+
 PageStackWindow 1.0 ./PageStackWindow.qml
+Page 1.0 ./Page.qml
+BottomBar 1.0 ./BottomBar.qml
 TopBar 1.0 ./TopBar.qml
+
+SampleIcon 1.0 ./SampleIcon.qml
 SampleLabel 1.0 ./SampleLabel.qml
+SampleButton 1.0 ./SampleButton.qml
+SampleTextField 1.0 ./SampleTextField.qml
+
 WebPage 1.0 ./WebPage.qml
 
-internal QObject ./QObject.qml
+Tracker 1.0 ./Tracker.qml
+ClickedShaderEffect 1.0 ./ClickedShaderEffect.qml
 
-UI 1.0 ./UI.js
+# internal QObject ./QObject.qml
+

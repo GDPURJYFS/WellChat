@@ -1,10 +1,13 @@
+import Resource 1.0 as R
+
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.2
-import "../../../Component"
+
 import Sparrow 1.0
+import Sparrow.PopupLayer 1.0
+
+import "../../../Component"
 
 Page {
     id: chatSettnigsPage
@@ -17,24 +20,20 @@ Page {
         try { stackView.pop(); }  catch(e) { }
     }
 
-    Constant {  id: constant  }
-
     topBar: TopBar {
         id: topBar
-        //! aviod looping binding
-        Item { anchors.fill: parent }
+//        //! aviod looping binding
+//        Item { anchors.fill: parent }
         RowLayout {
             anchors.fill: parent
             spacing: 10
 
             Item { width:  topBar.height - 2; height: width }
 
-            IconButton {
-                height: topBar.height - 2
-                width: topBar.height - 2
+            SampleIcon {
+                iconSource: R.R.activeIconBack
+                iconSize: Qt.size( topBar.height - 2,  topBar.height - 2)
                 anchors.verticalCenter: parent.verticalCenter
-                activeIconSource: constant.backActiveIcon
-                inactiveIconSource: constant.backInactiveIcon
                 onClicked: {
                     try { stackView.pop(); }  catch(e) { }
                 }
@@ -155,18 +154,19 @@ Page {
                     IconLabel {
                         Layout.fillWidth: true
                         labelText:  qsTr("Clear Chat History")
-                        onClicked: messageDialog.open()
-                        MessageDialog {
-                            id: messageDialog
-                            title: qsTr("Clear Chat History")
-                            informativeText: qsTr("Clear all message history")
-                            standardButtons: StandardButton.Yes | StandardButton.Cancel
-                            onYes: console.log("Yes")
-                            onRejected: console.log("Cancel")
-                        }
+                        onClicked: dialog.open()
                     }
                 } // Second Settings Ground
             } // Main ColumnLayout
         } // content
     } // ScrollView
+
+    PopupLayer {
+        id: dialog
+        popupItem.radius: chatSettnigsPage.width * 0.05
+        SampleButton {
+            anchors.centerIn: parent
+            text: qsTr("Clear?")
+        }
+    }
 }
