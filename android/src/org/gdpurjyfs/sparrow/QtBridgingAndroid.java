@@ -133,7 +133,9 @@ public class QtBridgingAndroid
                     // 小于100 就不行了
                     // 这里还要减去状态栏的高度
                     // 魔幻数字
-                    int magic = 5;
+                    // android:windowSoftInputMode="adjustPan" magic = 0
+                    // 其他情况为 5
+                    int magic = 0;
                     int virtualKeyboardHeight = screenHeight - (keyboardRectangle.bottom - keyboardRectangle.top) 
                                                 - outRect.top - magic;
 

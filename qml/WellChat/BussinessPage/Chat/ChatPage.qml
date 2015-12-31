@@ -1,6 +1,6 @@
 import Resource 1.0 as R
 
-import QtQuick 2.0
+import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
@@ -56,7 +56,7 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: username
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
@@ -82,8 +82,102 @@ Page {
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    property string chatContentBuffer: ""
+
+    Lazy {
+        id: lazy
+    }
+
+    property int readKeyboardHeight: Keyboard.keyboardRectangle.height
+
+    onReadKeyboardHeightChanged: {
+        //        console.log("onReadKeyboardHeightChanged, readKeyboardHeight:",
+        //                    readKeyboardHeight);
+        if(readKeyboardHeight != 0) {
+            keyboardHeight = Keyboard.keyboardRectangle.height;
+            //            console.log("onReadKeyboardHeightChanged, keyboardHeight:",
+            //                        keyboardHeight)
+        }
+    }
+
+    property int keyboardHeight: 0
+    onKeyboardHeightChanged: {
+        if(Qt.platform.os === "android") {
+            if(keyboardHeight != 0) {
+                upAnimation.to = keyboardHeight;
+                upAnimation.start();
+            }
+        }
+    }
+
+    NumberAnimation {
+        id: upAnimation
+        target: chatPage.bottomBarArea
+        duration: 50
+        from: 0
+        properties: "anchors.bottomMargin"
+    }
+
+    function inputMethodShowHelper() {
+        // 如果是安卓
+        if(Qt.platform.os === "android") {
+            // 第一次打开
+            if(keyboardHeight == 0) {
+                Qt.inputMethod.visibleChanged.connect(function() {
+                    if(Qt.inputMethod.visible) {
+                        Qt.inputMethod.visibleChanged.disconnect(arguments.callee);
+                        lazy.startCallback(50, function() {
+                            // 动态生成TextArea
+                            loader_input.sourceComponent = component_input;
+                            loader_input.item.focus = true;
+                        });
+                    }
+                });
+                Qt.inputMethod.show();
+            } else {
+                upAnimation.to = keyboardHeight;
+                upAnimation.start();
+                lazy.startCallback(50, function() {
+                    // 动态生成TextArea
+                    loader_input.sourceComponent = component_input;
+                    Qt.inputMethod.show();
+                });
+            }
+        } else {
+            loader_input.sourceComponent = component_input;
+            loader_input.item.focus = true;
+        }
+    }
+
+    signal keyboardOpen()
+    onKeyboardOpen: {
+        if(Qt.platform.os === "android") {
+            try {
+                if(!Keyboard.visible) {
+                    // 关闭键盘
+                    loader_input.sourceComponent = undefined;
+                    upAnimation.to = 0;
+                    upAnimation.start();
+                }
+            } catch(e) {
+                console.log(e)
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        Qt.inputMethod.visibleChanged.connect(keyboardOpen);
+    }
+
     bottomBar: BottomBar {
+        id: bottombar
+
+        focus: true
+
         RowLayout {
+            focus: true
             anchors.fill: parent
 
             spacing: 5
@@ -96,43 +190,200 @@ Page {
             }
 
             Item {
+                focus: true
                 Layout.fillWidth: true
-                implicitHeight: input.implicitHeight
-                SampleTextArea {
-                    id: input
-                    // textFormat: TextEdit.RichText
-                    width: parent.width
-                    implicitHeight: {
-                        if(lineCount >= 2) {
-                            (topBar.height - 2) * 2
-                        } else {
-                            (topBar.height- 2) * lineCount
-                        }
+                implicitHeight: topBar.height
+
+                IconButton {
+                    width: topBar.height * 0.9
+                    height: topBar.height * 0.9
+                    activeIconSource: R.R.activeIconEmoticon
+                    inactiveIconSource: R.R.inactiveIconEmoticon
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+                }
+
+                Rectangle {
+                    FontMetrics {
+                        id: fontMetrics
+                        font.family: GeneralSettings.generalfontFamily
+                        font.pointSize: GeneralSettings.generalFontPointSize
+                        font.weight: Font.Thin
+                        font.bold: false
                     }
-                    IconButton {
-                        width: topBar.height * 0.9
-                        height: topBar.height * 0.9
-                        activeIconSource: R.R.activeIconEmoticon
-                        inactiveIconSource: R.R.inactiveIconEmoticon
-                        anchors.bottom: parent.bottom
-                        anchors.right: parent.right
-                        anchors.rightMargin: 10
+                    width: parent.width - 10
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height: 1
+                    color: parent.focus? "#71d01d" : "#ccc"
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: fontMetrics.height * 0.2
+                }
+
+                Component {
+                    id: component_input
+                    // Sample
+                    TextArea {
+                        id: input
+
+                        //readOnly: true
+
+                        focus: true
+
+                        font.family: GeneralSettings.generalfontFamily
+                        font.pointSize: GeneralSettings.generalFontPointSize
+                        wrapMode: TextEdit.Wrap
+                        backgroundVisible: false
+
+                        Component.onDestruction: {
+                            chatContentBuffer = input.text;
+                        }
+
+                        Component.onCompleted: {
+                            input.text = chatContentBuffer;
+                            input.cursorPosition = input.length;
+                        }
+
+                        // textFormat: TextEdit.RichText
+                        width: parent.width
+                        implicitHeight: {
+                            if(lineCount >= 2) {
+                                (topBar.height - 2) * 2
+                            } else {
+                                (topBar.height- 2) * lineCount
+                            }
+                        }
+
+                        // Tracker { }
+                    }
+                }
+
+                Loader {
+                    id: loader_input
+                    focus: true
+
+                    anchors.fill: parent
+                    onLoaded: {
+                        loader_input.item.focus = true;
                     }
 
+                    MouseArea {
+                        anchors.fill: parent
+                        visible: {
+                            if(loader_input.item) {
+                                return loader_input.item.readOnly
+                            } else {
+                                return true;
+                            }
+                        }
+
+                        onClicked: inputMethodShowHelper();
+
+                        // 当关闭输入框的时候
+                        // 用来显示上次输入的文本
+                        SampleLabel {
+                            width: parent
+                            elide: Text.ElideRight
+                            text: chatContentBuffer
+                            verticalAlignment: Text.AlignVCenter
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                    }
                 }
             }
 
             SampleButton {
                 id: sendButton
+                width: topBar.height * 0.9
+                height: topBar.height * 0.9
                 Layout.alignment: Qt.AlignRight
                 text: qsTr("Send")
                 onClicked:  {
                     __sendHelp();
                 }
             }
+
             Item { width: 5; height: 5 }
         }
     }
+
+    /*
+    states: [
+        //        State {
+        //            name: "FixTopBar"
+        //            PropertyChanges {
+        //                target: chatPage.topBarArea
+        //                anchors.topMargin: try {
+        //                                       return Keyboard.keyboardRectangle.height;
+        //                                   } catch(e) {
+        //                                       return 0;
+        //                                   }
+        //            }
+        //        }
+        State {
+            name: "FixBottomBar"
+            PropertyChanges {
+                target: chatPage.bottomBarArea
+                anchors.bottomMargin: keyboardHeight
+            }
+        }
+    ]
+
+    transitions: [
+        //        Transition {
+        //            from: "FixTopBar"
+        //            to: ""
+        //            NumberAnimation {
+        //                property: "anchors.topMargin"
+        //                duration: 350
+        //            }
+        //        },
+        //        Transition {
+        //            from: ""
+        //            to: "FixTopBar"
+        //            NumberAnimation {
+        //                property: "anchors.topMargin"
+        //                duration: 350
+        //            }
+        //        }
+        Transition {
+            // 回落，键盘收回
+            from: "FixBottomBar"
+            to: ""
+            SequentialAnimation {
+                ScriptAction {
+                    script: {
+                        loader_input.sourceComponent = undefined;
+                        console.log("from FixBottomBar to '', readOnly is true");
+                    }
+                }
+                NumberAnimation {
+                    property: "anchors.bottomMargin"
+                    duration: 150
+                }
+            }
+        },
+        Transition {
+            from: ""
+            to: "FixBottomBar"
+            SequentialAnimation {
+                NumberAnimation {
+                    property: "anchors.bottomMargin"
+                    duration: 150
+                }
+                ScriptAction {
+                    script: {
+                        loader_input.sourceComponent = component_input;
+
+                        console.log("from '' to FixBottomBar, readOnly is false");
+                    }
+                }
+            }
+        }
+    ]
+    */
+
+    ////////////////////////////////////////////////////////////////////////
 
     property string userId: "垃圾君"
 
@@ -175,7 +426,7 @@ Page {
         }
     }
 
-    property bool __dontFixTopBar: false
+    property bool __dontFixBottomBar: false
 
     PopupLayer {
         id: inputYourNicoName
@@ -184,9 +435,9 @@ Page {
         popupItem.height: popupItem.width * 0.5
         onStateChanged: {
             if(inputYourNicoName.state == "Hide") {
-                __dontFixTopBar = false;
+                __dontFixBottomBar = false;
             } else {
-                __dontFixTopBar = true;
+                __dontFixBottomBar = true;
             }
         }
 
@@ -221,62 +472,6 @@ Page {
         }
     }
 
-    states: [
-        State {
-            name: "FixTopBar"
-            PropertyChanges {
-                target: chatPage.topBarArea
-                anchors.topMargin: try {
-                                       return Keyboard.keyboardRectangle.height;
-                                   } catch(e) {
-                                       return 0;
-                                   }
-            }
-        }
-    ]
-
-    transitions: [
-        Transition {
-            from: "FixTopBar"
-            to: ""
-            NumberAnimation {
-                property: "anchors.topMargin"
-                duration: 350
-            }
-        },
-        Transition {
-            from: ""
-            to: "FixTopBar"
-            NumberAnimation {
-                property: "anchors.topMargin"
-                duration: 350
-            }
-        }
-    ]
-
-    function fixTopBar() {
-        chatPage.state = "FixTopBar";
-    }
-
-    function resetTopBar() {
-        chatPage.state = "";
-    }
-
-    signal keyboardOpen()
-    onKeyboardOpen: {
-        try {
-            if(Keyboard.visible && !__dontFixTopBar) {
-                console.log("Keyboard open");
-                fixTopBar();
-            } else {
-                console.log("Keyboard close");
-                resetTopBar();
-            }
-        } catch(e) {
-            console.log(e)
-        }
-    }
-
     onApplicationStateChanged: {
         if(applicationState == Qt.ApplicationInactive
                 || applicationState ==  Qt.ApplicationSuspended
@@ -285,18 +480,14 @@ Page {
         }
     }
 
-    Component.onCompleted: {
-        Qt.inputMethod.visibleChanged.connect(keyboardOpen);
-    }
-
     function __sendHelp() {
-        if(input.text != "" ) {
+        if(loader_input.item.text !== "" ) {
             chatModels.append({
-                                  "ChatText": input.text,
+                                  "ChatText": loader_input.item.text,
                                   "ChatId": userId
                               });
             view.positionViewAtIndex(view.count-1, ListView.End );
-            __sendTextToTuling123(input.text,
+            __sendTextToTuling123(loader_input.item.text,
                                   userId,
                                   function(responseText){
                                       chatModels
@@ -309,7 +500,7 @@ Page {
                                   },
                                   errorCodeHandle
                                   );
-            input.text = "";
+            loader_input.item.text = "";
         }
     }
 
@@ -428,4 +619,3 @@ Page {
         }
     }
 }
-

@@ -164,6 +164,7 @@ Rectangle {
 
         Item {
             id: bottomBarParent
+            anchors.bottomMargin: 0
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.left: parent.left
