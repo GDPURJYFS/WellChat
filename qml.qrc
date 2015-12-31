@@ -152,5 +152,6 @@
         <file>qml/WellChat/MainView.qml</file>
         <file>qml/WellChat/WellChat.qmlproject</file>
         <file>qml/WellChat/BussinessPage/Chat/Lazy.qml</file>
+        <file>qml/WellChat/BussinessPage/Chat/Tuling123.js</file>
     </qresource>
 </RCC>
