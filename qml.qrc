@@ -132,7 +132,6 @@
         <file>qml/WellChat/Sparrow/PopupLayer/PopupLayerTransition.qml</file>
         <file>qml/WellChat/Sparrow/PopupLayer/qmldir</file>
         <file>qml/WellChat/Sparrow/PopupLayer/readme.md</file>
-        <file>qml/WellChat/Sparrow/resources/NotoSansHans-DemiLight.otf</file>
         <file>qml/WellChat/Sparrow/resources/readme.md</file>
         <file>qml/WellChat/Sparrow/BottomBar.qml</file>
         <file>qml/WellChat/Sparrow/ClickedShaderEffect.qml</file>
@@ -152,5 +151,6 @@
         <file>qml/WellChat/main.qml</file>
         <file>qml/WellChat/MainView.qml</file>
         <file>qml/WellChat/WellChat.qmlproject</file>
+        <file>qml/WellChat/BussinessPage/Chat/Lazy.qml</file>
     </qresource>
 </RCC>

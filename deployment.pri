@@ -25,4 +25,9 @@ android-no-sdk {
     INSTALLS += target
 }
 
+win32 {
+    RESOURCES += \
+        desktop.qrc
+}
+
 export(INSTALLS)

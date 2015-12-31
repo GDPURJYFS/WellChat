@@ -49,7 +49,15 @@ QObject {
 
     FontLoader {
         id: fontLoader
-        source: "./resources/NotoSansHans-DemiLight.otf"
+        source:{
+            if(Qt.platform.os === "android") {
+                 //return "file:///android_asset/font/NotoSansHans-DemiLight.otf"
+                return "assets:/font/NotoSansHans-DemiLight.otf"
+            } else {
+                console.log("Not Android");
+                return "./resources/NotoSansHans-DemiLight.otf"
+            }
+        }
     }
 
     /*! internal settings */

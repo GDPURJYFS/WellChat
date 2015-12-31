@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/WellChat/Sparrow/resources/NotoSansHans-DemiLight.otf</file>
+    </qresource>
+</RCC>
