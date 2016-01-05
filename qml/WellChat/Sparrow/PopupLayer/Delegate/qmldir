@@ -2,3 +2,4 @@ module PopupLayer.Delegate
 
 PopupLayerDialogDelegate 1.0 ./PopupLayerDialogDelegate.qml
 PopupLayerSideMenuDelegate 1.0 ./PopupLayerSideMenuDelegate.qml
+PopupLayerBottomMenuDelegate 1.0 ./PopupLayerBottomMenuDelegate.qml

@@ -116,7 +116,38 @@
     }
     ```
 
-6. 在 QML 实现动画的总结
+6. 如何使用
+
+```
+PopupLayer{
+    id: optionsMenu
+
+    popupItem.width: page.width
+    popupItem.height: page.width < page.height
+                      ? page.width * 0.5
+                      : page.height * 0.3
+
+    delegate: PopupLayerBottomMenuDelegate {
+        // 必须指定 popupItem 和 maskItem
+        popupItem: optionsMenu.popupItem
+        maskItem: optionsMenu
+    }
+
+    Item {
+        anchors.fill: parent
+        Button {
+            anchors.centenIn: parent
+            text: "close"
+            onClicked: {
+                optionsMenu.close();
+            }
+        }
+    }
+}
+```
+
+
+7. 在 QML 实现动画的总结
 
     1. 确定要对谁实施动画。（target）。
 
