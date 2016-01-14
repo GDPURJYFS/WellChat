@@ -63,13 +63,11 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: (topBar.height - 2) * 1.5
             anchors.fill: parent
-            Label {
+            SampleLabel {
                 text: profilePage.title
                 // Layout.alignment: Qt.AlignRight
                 color: "white"
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: GeneralSettings.generalfontFamily
-                font.pointSize: constant.middleFontPointSize
             }
         }
     }

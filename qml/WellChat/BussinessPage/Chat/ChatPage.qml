@@ -284,7 +284,7 @@ Page {
                         // 当关闭输入框的时候
                         // 用来显示上次输入的文本
                         SampleLabel {
-                            width: parent
+                            width: parent.width
                             elide: Text.ElideRight
                             text: chatContentBuffer
                             verticalAlignment: Text.AlignVCenter
