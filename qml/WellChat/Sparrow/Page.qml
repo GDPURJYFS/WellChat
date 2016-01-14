@@ -162,6 +162,20 @@ Rectangle {
             ]
         }
 
+        //! [0]
+        // TopBar Shadow Map
+        Rectangle {
+            // visible: false
+            anchors.top: topBarParent.bottom
+            width: topBarParent.width
+            height: topBarParent.height * 0.09
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#22292c" }
+                GradientStop { position: 1.0; color: "transparent" }
+            }
+        }
+        //! [0]
+
         Item {
             id: bottomBarParent
             anchors.bottomMargin: 0
