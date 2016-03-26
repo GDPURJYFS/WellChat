@@ -267,6 +267,7 @@ Page {
                     anchors.fill: parent
                     onLoaded: {
                         loader_input.item.focus = true;
+                        loader_input.item.forceActiveFocus();
                     }
 
                     MouseArea {
