@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+        <file>qml/main.qml</file>
+        <file>qml/common/common.js</file>
+        <file>qml/component/sqml/CrudDao.qml</file>
+        <file>qml/component/sqml/CrudService.qml</file>
+        <file>qml/component/sqml/DatabaseConnection.qml</file>
+        <file>qml/component/sqml/SqlMapping.qml</file>
+        <file>qml/pages/MePage.qml</file>
+        <file>qml/main.qmlc</file>
+        <file>qml/qml.qmlproject</file>
+        <file>qml/qml.qmlproject.user</file>
+    </qresource>
+</RCC>
