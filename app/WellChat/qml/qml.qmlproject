@@ -27,6 +27,14 @@ Project {
         directory: "."
         filter: "*.scxml"
     }
+    Files {
+        directory: "."
+        filter: "*.qmlc"
+    }
+    Files {
+        directory: "."
+        filter: "*.jsc"
+    }
     /* List of plugin directories passed to QML runtime */
     // importPaths: [ "../exampleplugin" ]
 }

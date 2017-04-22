@@ -2,6 +2,7 @@ import QtQuick 2.7
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
+import Qt.labs.settings 1.0
 
 import "./pages"
 import "./pages/me"
@@ -26,6 +27,12 @@ ApplicationWindow {
 
     Database {
         id: dataBase
+    }
+
+    Settings {
+        id: globalSettings
+        category: "MessageNotification"
+        property bool notification: true
     }
 
     StackView {

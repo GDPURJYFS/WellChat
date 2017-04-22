@@ -2,6 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 
+import "../../component/utils"
 import "../../component/view"
 import "../../component"
 import "../../service/chat"
@@ -38,6 +39,7 @@ Page {
     }
 
     ListView {
+
         id: listView
         anchors.fill: parent
         anchors.bottomMargin: 8 * dp
@@ -49,7 +51,6 @@ Page {
         }
 
         spacing: 10 * dp
-
 
         delegate: Item {
             width: parent.width
@@ -98,7 +99,17 @@ Page {
                     source: "../../assets/images/default.png"
                 }
             }
+        }
+        Component.onCompleted: {
+            var query = {
+                "groupId": "0"
+            }
 
+            chatMessageService.findList(query, function(list){
+                for(var iter in list) {
+                    listModel.append(list[iter]);
+                }
+            });
         }
     }
 
@@ -130,18 +141,17 @@ Page {
         connection: dataBase
     }
 
+    Lazyer {
+        id: lazyer
+    }
+
     Component.onCompleted: {
-        var query = {
-            "groupId": "0"
-        }
 
-        chatMessageService.findList(query, function(list){
-            for(var iter in list) {
-                listModel.append(list[iter]);
-            }
-
+        lazyer.lazyDo(200, function(){
             listView.positionViewAtEnd();
-        });
+        })
+
+//        listView.positionViewAtEnd();
     }
 
     function sendMessage(msgContent) {
