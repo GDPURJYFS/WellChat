@@ -17,7 +17,6 @@ ApplicationWindow {
     width: 360
     height: 640
 
-
     property real dpScale:  1.5
     readonly property real dp: Math.max(Screen.pixelDensity * 25.4 / 160 * dpScale, 1)
 
