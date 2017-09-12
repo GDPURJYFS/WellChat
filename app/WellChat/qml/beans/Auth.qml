@@ -1,5 +1,7 @@
 import QtQuick 2.0
 
 QtObject {
-    property string token: ''
+    property string userName
+    property string token
+
 }

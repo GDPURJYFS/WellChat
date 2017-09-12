@@ -1,0 +1,5 @@
+# fontawesome
+module fontawesome
+
+singleton FontAwesome           1.0                 ./FontAwesome.qml
+FontIcon                        1.0                 ./FontIcon.qml

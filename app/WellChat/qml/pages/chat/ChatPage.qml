@@ -2,11 +2,11 @@ import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 
-import "../../component/utils"
 import "../../component/view"
 import "../../component"
 import "../../service/chat"
-import "../../js/common/common.js" as Common
+
+import space.qyvlik.utils 1.0
 
 Page {
     id: chatPage
@@ -161,7 +161,7 @@ Page {
         }
 
         var message = {
-            id: Common.randomString(32, false),
+            id: Utility.randomString(32, false),
             senderId: "0",
             receiverId: "1",
             content: msgContent,

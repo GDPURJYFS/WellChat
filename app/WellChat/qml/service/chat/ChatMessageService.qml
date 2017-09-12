@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-import "../../component/sqml"
+import space.qyvlik.sqml 1.0
 
 CrudService {
     id: chatMessageService
@@ -14,6 +14,7 @@ CrudService {
      * message(id, content, senderId, receiverId, groupId, read, createTime)
      */
     function saveMessage(message, callback) {
+        console.log("message: ", JSON.stringify(message));
         insert(message, callback);
     }
 }

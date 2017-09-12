@@ -15,6 +15,17 @@ Project {
     ImageFiles {
         directory: "."
     }
+
+    QmlFiles {
+        directory: "../qmlModules"
+    }
+    JavaScriptFiles {
+        directory: "../qmlModules"
+    }
+    ImageFiles {
+        directory: "../assets"
+    }
+
     Files {
         directory: "."
         filter: "*.qmodel"
@@ -27,14 +38,6 @@ Project {
         directory: "."
         filter: "*.scxml"
     }
-//    Files {
-//        directory: "."
-//        filter: "*.qmlc"
-//    }
-//    Files {
-//        directory: "."
-//        filter: "*.jsc"
-//    }
     /* List of plugin directories passed to QML runtime */
-    // importPaths: [ "../exampleplugin" ]
+    importPaths: [ "../qmlModules" ]
 }

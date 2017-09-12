@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-import "../../component/sqml"
+import space.qyvlik.sqml 1.0
 
 /*
 CREATE TABLE `message` (
@@ -67,7 +67,7 @@ SqlMapping {
 
         return {
             "sql": sql,
-            "sqlArgs": sqlArgs
+            "bind": sqlArgs
         };
     }
 
@@ -113,7 +113,7 @@ SqlMapping {
 
         return {
             "sql": sql,
-            "sqlArgs": sqlArgs
+            "bind": sqlArgs
         };
     }
 
@@ -162,7 +162,7 @@ SqlMapping {
 
         return {
             "sql": sql,
-            "sqlArgs": sqlArgs
+            "bind": sqlArgs
         };
     }
 
@@ -197,7 +197,7 @@ SqlMapping {
 
         return {
             "sql": sql,
-            "sqlArgs": sqlArgs
+            "bind": sqlArgs
         };
     }
 

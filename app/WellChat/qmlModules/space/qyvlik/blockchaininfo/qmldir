@@ -1,0 +1,4 @@
+# blockchain.info websocket api warp by qml
+module blockchaininfo
+
+BlockChainInfo                 1.0                 ./BlockChainInfo.qml

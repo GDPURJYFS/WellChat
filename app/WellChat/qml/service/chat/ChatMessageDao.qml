@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-import "../../component/sqml"
+import space.qyvlik.sqml 1.0
 
 CrudDao {
     id: chatMessageDao

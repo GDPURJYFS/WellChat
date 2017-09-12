@@ -1,0 +1,8 @@
+# utils
+module utils
+
+Lazyer              1.0                 ./Lazyer.qml
+Ticker              1.0                 ./Ticker.qml
+Tracker             1.0                 ./Tracker.qml
+Utility             1.0                 ./Utility.js
+PromiseLib          1.0                 ./Promise.qml.js

@@ -1,0 +1,4 @@
+# Simple layering CRUD for qml
+module qrcode
+
+QRCode                 1.0                 ./QRCode.qml

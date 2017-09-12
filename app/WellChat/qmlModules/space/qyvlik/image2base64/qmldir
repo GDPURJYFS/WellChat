@@ -1,0 +1,4 @@
+# image2base64
+module image2base64
+
+Image2Base64                 1.0                 ./Image2Base64.qml

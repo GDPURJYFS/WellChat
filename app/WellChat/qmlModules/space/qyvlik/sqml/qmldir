@@ -1,0 +1,8 @@
+# Simple layering CRUD for qml
+module sqml
+
+CrudDao                 1.0                 ./CrudDao.qml
+CrudService             1.0                 ./CrudService.qml
+DatabaseConnection      1.0                 ./DatabaseConnection.qml
+SqlMapping              1.0                 ./SqlMapping.qml
+SqlQueryBuilder         1.0                 ./SqlQueryBuilder.qml

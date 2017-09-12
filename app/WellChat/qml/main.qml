@@ -83,11 +83,11 @@ ApplicationWindow {
     }
 
     Component.onDestruction:  {
-//        dataBase.transaction(function (tx){
-//            var sql = 'DROP TABLE message';
-//            tx.executeSql(sql);
-//            console.log("sql: ", sql)
-//        });
+        dataBase.transaction(function (tx){
+            var sql = 'DROP TABLE message';
+            tx.executeSql(sql);
+            console.log("sql: ", sql)
+        });
     }
 
 
